@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- ================== MIMHO WHITEPAPER — SEO / SOCIAL ================== -->
+
+<meta charset="UTF-8" />
+
+<title>MIMHO Whitepaper – Tokenomics, Governance & On-Chain Architecture | BNB Chain</title>
+
+<meta name="description" content="The official MIMHO Whitepaper detailing tokenomics, DAO governance, vesting, liquidity mechanisms, and the fully on-chain architecture of the MIMHO ecosystem on BNB Chain." />
+
+<link rel="canonical" href="https://mimho.io/whitepaper.html" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MIMHO Whitepaper – On-Chain Tokenomics & Governance" />
+<meta property="og:description" content="Read the official MIMHO Whitepaper covering tokenomics, DAO governance, vesting, liquidity protection, and the modular on-chain ecosystem built on BNB Chain." />
+<meta property="og:url" content="https://mimho.io/whitepaper" />
+<meta property="og:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_WHITEPAPER" />
+<meta property="og:site_name" content="MIMHO" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MIMHO Whitepaper – Transparent On-Chain Ecosystem" />
+<meta name="twitter:description" content="The official MIMHO Whitepaper explaining tokenomics, DAO governance, vesting rules, liquidity protection, and the long-term vision of the MIMHO ecosystem on BNB Chain." />
+<meta name="twitter:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_WHITEPAPER" />
+<meta name="twitter:site" content="@Mimho_Ecosystem" />
+
+<!-- Fonts / Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================== END MIMHO WHITEPAPER META ================== -->
+
+  <style>
+    :root {
+      --orange-glow: #ff8c00;
+      --orange-deep: #ff4500;
+      --mimho-blue: #0047ff;
+      --dark-bg: #03040a;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-silver: #e0e0e0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-silver);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    .ambient-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(80px);
+      top: 10%;
+      left: -150px;
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(3, 4, 10, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Logo clicável -> HOME */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .logo-wrapper img { height: 32px; width: auto; display: block; }
+
+    .logo-text {
+      font-family: 'Orbitron';
+      font-weight: 900;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #fff, var(--orange-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .nav-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 25px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    /* Botão CONNECT */
+    .btn-premium {
+      background: linear-gradient(135deg, var(--orange-glow), var(--orange-deep));
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    .btn-premium:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+    }
+
+    /* ✅ Botão de idioma (combina com o site) */
+    .btn-lang {
+      background: transparent;
+      border: 2px solid rgba(255, 140, 0, 0.85);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-lang:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(255,140,0,0.22);
+    }
+    .btn-lang .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange-glow);
+      box-shadow: 0 0 10px rgba(255,140,0,0.45);
+      display: inline-block;
+    }
+
+    .page-wrap {
+      padding-top: 110px;
+      padding-left: 8%;
+      padding-right: 8%;
+      padding-bottom: 80px;
+    }
+
+    /* Card FULL-WIDTH do topo */
+    .hero-card {
+      width: 100%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 25px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .hero-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,140,0,0.55);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.12);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(circle at 20% 10%, rgba(255,140,0,0.15), transparent 55%),
+                  radial-gradient(circle at 90% 40%, rgba(0,71,255,0.10), transparent 55%);
+      filter: blur(20px);
+      opacity: 0.9;
+      pointer-events:none;
+    }
+    .hero-card > * { position: relative; z-index: 2; }
+
+    .hero-tag {
+      color: var(--orange-glow);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      font-family: 'Orbitron';
+      color: #fff;
+    }
+    @media (max-width: 520px) {
+      .hero-title { font-size: 1.8rem; }
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: #aaa;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 980px;
+      white-space: normal;
+    }
+
+    /* Grid de cards */
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+    @media (max-width: 900px) {
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .manifesto-card { grid-column: span 12 !important; }
+    }
+
+    .manifesto-card {
+      grid-column: span 6;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: default;
+    }
+    .manifesto-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,140,0,0.55);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.12);
+    }
+
+    .manifesto-card .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Orbitron';
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: #111;
+      background: linear-gradient(135deg, var(--orange-glow), var(--orange-deep));
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 140, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange-glow);
+      background: rgba(0,0,0,0.35);
+      flex: 0 0 auto;
+    }
+
+    .manifesto-card h2 {
+      margin: 0 0 10px;
+      font-family: 'Orbitron';
+      color: #fff;
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+    }
+
+    .manifesto-card p {
+      margin: 0 0 10px;
+      color: #bbb;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      font-size: 1.02rem;
+      white-space: normal;
+    }
+
+    .manifesto-card .bullets {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #bdbdbd;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+    }
+    .manifesto-card .bullets li { margin: 6px 0; }
+
+    .full { grid-column: span 12; }
+
+    /* Rodapé */
+    footer {
+      padding: 60px 8%;
+      border-top: 1px solid #111;
+      text-align: center;
+      margin-top: 70px;
+      color: #666;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-contact {
+      margin-top: 30px;
+      border-top: 1px solid #222;
+      padding-top: 20px;
+    }
+    .footer-contact h4 {
+      font-family: 'Orbitron';
+      font-size: 0.8rem;
+      color: var(--orange-glow);
+      letter-spacing: 2px;
+      margin: 0 0 10px;
+    }
+    .footer-link {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Inter';
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    .footer-link:hover { color: var(--orange-glow); }
+
+    .footer-actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid var(--orange-glow);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(255,140,0,0.25);
+    }
+    
+    .footer-github{
+  margin-top:6px;
+  text-decoration:none;
+  color:#fff;
+  font-size:0.8rem;
+  border:1px solid var(--glass-border);
+  padding:8px 18px;
+  border-radius:22px;
+  transition:0.3s;
+}
+.footer-github i{ margin-right:6px; }
+.footer-github:hover{
+  border-color:var(--orange-glow);
+  color:var(--orange-glow);
+}
+    
+  </style>
+</head>
+
+<body>
+  <div class="ambient-light"></div>
+
+  <header>
+    <a class="logo-wrapper" href="index.html" title="Back to Home">
+      <img src="https://ipfs.io/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy" alt="MIMHO Logo">
+      <div class="logo-text">MIMHO</div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="manifesto.html">MANIFESTO</a>
+      <a href="roadmap.html">ROADMAP</a>
+      <a href="index.html">FAQ</a>
+      <a href="whitepaper.html" style="color:#fff;">WHITEPAPER</a>
+    </nav>
+
+    <div style="display:flex; gap:12px; align-items:center;">
+      <!-- ✅ Botão idioma -->
+      <button class="btn-lang" id="langToggle" type="button" title="Switch language">
+        <span class="dot"></span>
+        <span id="langLabel">EN</span>
+      </button>
+
+      <button class="btn-premium" id="connectBtn">CONNECT</button>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+
+    <section class="hero-card">
+      <div class="hero-tag"
+           data-pt="📘 WHITEPAPER OFICIAL — ECOSSISTEMA MIMHO"
+           data-en="📘 OFFICIAL WHITEPAPER — MIMHO ECOSYSTEM">
+        📘 WHITEPAPER OFICIAL — ECOSSISTEMA MIMHO
+      </div>
+
+      <h1 class="hero-title"
+          data-pt="MIMHO – a Meme Coin do Futuro"
+          data-en="MIMHO – the Meme Coin of the Future">
+        MIMHO – a Meme Coin do Futuro
+      </h1>
+
+      <p class="hero-sub"
+         data-pt="Onde a Web3 deixa de ser promessa e vira sistema. A seguir, a visão, arquitetura, contratos fundacionais e regras que tornam o MIMHO um ecossistema auditável, modular e governado on-chain."
+         data-en="Where Web3 stops being a promise and becomes a system. Below: the vision, architecture, foundational contracts, and rules that make MIMHO an auditable, modular, on-chain governed ecosystem.">
+        Onde a Web3 deixa de ser promessa e vira sistema.
+        A seguir, a visão, arquitetura, contratos fundacionais e regras que tornam o MIMHO um ecossistema auditável, modular e governado on-chain.
+      </p>
+    </section>
+
+    <section class="manifesto-grid">
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="1. INTRODUÇÃO"
+                data-en="1. INTRODUCTION">1. INTRODUÇÃO</span>
+          <span class="card-icon"><i class="fa-solid fa-book-open"></i></span>
+        </div>
+
+        <h2 data-pt="Uma resposta direta às falhas do mercado"
+            data-en="A direct response to market failures">
+          Uma resposta direta às falhas do mercado
+        </h2>
+
+        <p data-pt="O mercado de memecoins cresceu rapidamente, mas esse crescimento expôs falhas estruturais recorrentes: ausência de regras claras, dependência excessiva de confiança humana, distribuições opacas, queimas arbitrárias e governança simbólica."
+           data-en="The memecoin market grew rapidly, but this growth exposed recurring structural failures: lack of clear rules, excessive reliance on human trust, opaque distributions, arbitrary burns, and symbolic or absent governance.">
+          O mercado de memecoins cresceu rapidamente, mas esse crescimento expôs falhas estruturais recorrentes: ausência de regras claras, dependência excessiva de confiança humana, distribuições opacas, queimas arbitrárias e governança simbólica.
+        </p>
+
+        <p data-pt="O MIMHO nasce como uma resposta direta a essas falhas. Este projeto não tenta parecer sério. Ele é sério por construção."
+           data-en="MIMHO is born as a direct response to these failures. This project does not try to look serious. It is serious by construction.">
+          O MIMHO nasce como uma resposta direta a essas falhas. Este projeto não tenta parecer sério. Ele é sério por construção.
+        </p>
+
+        <p data-pt="No ecossistema MIMHO, código substitui promessas, regras substituem confiança e eventos públicos substituem discursos."
+           data-en="In the MIMHO ecosystem, code replaces promises, rules replace trust, and public events replace speeches.">
+          No ecossistema MIMHO, código substitui promessas, regras substituem confiança e eventos públicos substituem discursos.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="2. VISÃO & FILOSOFIA"
+                data-en="2. VISION & PHILOSOPHY">2. VISÃO & FILOSOFIA</span>
+          <span class="card-icon"><i class="fa-solid fa-compass"></i></span>
+        </div>
+
+        <h2 data-pt="“Nada depende de confiança. Tudo depende de código.”"
+            data-en="“Nothing depends on trust. Everything depends on code.”">
+          “Nada depende de confiança. Tudo depende de código.”
+        </h2>
+
+        <p data-pt="Visão: construir um ecossistema Web3 modular, transparente, governado on-chain e sustentável no longo prazo."
+           data-en="Vision: build a modular, transparent, on-chain governed Web3 ecosystem that is sustainable in the long term.">
+          Visão: construir um ecossistema Web3 modular, transparente, governado on-chain e sustentável no longo prazo.
+        </p>
+
+        <ul class="bullets">
+          <li data-pt="Código é lei" data-en="Code is law">Código é lei</li>
+          <li data-pt="Regras imutáveis" data-en="Immutable rules">Regras imutáveis</li>
+          <li data-pt="Governança progressiva" data-en="Progressive governance">Governança progressiva</li>
+          <li data-pt="Transparência total" data-en="Total transparency">Transparência total</li>
+          <li data-pt="Evolução sem ruptura" data-en="Evolution without rupture">Evolução sem ruptura</li>
+        </ul>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="3. O TOKEN MIMHO"
+                data-en="3. THE MIMHO TOKEN">3. O TOKEN MIMHO</span>
+          <span class="card-icon"><i class="fa-solid fa-coins"></i></span>
+        </div>
+
+        <h2 data-pt="Simples por design, forte por arquitetura"
+            data-en="Simple by design, strong by architecture">
+          Simples por design, forte por arquitetura
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="Supply fixo" data-en="Fixed supply">Supply fixo</li>
+          <li data-pt="Mint permanentemente desativado" data-en="Mint permanently disabled">Mint permanentemente desativado</li>
+          <li data-pt="Sem inflação" data-en="No inflation">Sem inflação</li>
+          <li data-pt="Sem funções ocultas" data-en="No hidden functions">Sem funções ocultas</li>
+        </ul>
+
+        <p style="margin-top:12px;"
+   data-pt="Toda a complexidade reside em contratos auxiliares. Isso facilita auditoria, compatibilidade com CEXs, segurança de longo prazo e previsibilidade econômica."
+   data-en="All complexity lives in auxiliary contracts. This improves auditability, CEX compatibility, long-term security, and economic predictability.">
+  Toda a complexidade reside em contratos auxiliares. Isso facilita auditoria, compatibilidade com CEXs, segurança de longo prazo e previsibilidade econômica.
+</p>
+</article>
+
+<article class="manifesto-card">
+  <div class="card-top">
+    <span class="chip"
+          data-pt="4. ARQUITETURA"
+          data-en="4. ARCHITECTURE">4. ARQUITETURA</span>
+    <span class="card-icon"><i class="fa-solid fa-diagram-project"></i></span>
+  </div>
+
+  <h2 data-pt="19 contratos fundacionais, interconectados"
+      data-en="19 foundational contracts, interconnected">
+    19 contratos fundacionais, interconectados
+  </h2>
+
+  <p data-pt="O ecossistema MIMHO é composto por 19 contratos fundacionais, todos registrados on-chain, descobertos via MIMHO Registry, auditáveis e interconectados por eventos públicos no HUD."
+     data-en="The MIMHO ecosystem is composed of 19 foundational contracts, all registered on-chain, discovered via the MIMHO Registry, auditable, and interconnected through public events in the HUD.">
+    O ecossistema MIMHO é composto por 19 contratos fundacionais, todos registrados on-chain, descobertos via MIMHO Registry, auditáveis e interconectados por eventos públicos no HUD.
+  </p>
+
+  <p><strong data-pt="Lista oficial:" data-en="Official list:">Lista oficial:</strong></p>
+
+  <ul class="bullets">
+    <li data-pt="MIMHO Registry" data-en="MIMHO Registry">MIMHO Registry</li>
+    <li data-pt="MIMHO Token" data-en="MIMHO Token">MIMHO Token</li>
+    <li data-pt="MIMHO DAO" data-en="MIMHO DAO">MIMHO DAO</li>
+    <li data-pt="MIMHO Burn" data-en="MIMHO Burn">MIMHO Burn</li>
+    <li data-pt="MIMHO Liquidity Bootstrapper" data-en="MIMHO Liquidity Bootstrapper">MIMHO Liquidity Bootstraper</li>
+    <li data-pt="MIMHO Inject Liquidity" data-en="MIMHO Inject Liquidity">MIMHO Inject liquidity</li>
+    <li data-pt="MIMHO Staking" data-en="MIMHO Staking">MIMHO Staking</li>
+    <li data-pt="MIMHO Mart" data-en="MIMHO Mart">MIMHO Mart</li>
+    <li data-pt="MIMHO Marketplace" data-en="MIMHO Marketplace">MIMHO Marketplace</li>
+    <li data-pt="MIMHO Strategy Hub" data-en="MIMHO Strategy Hub">MIMHO Strategy Hub</li>
+    <li data-pt="MIMHO Quiz Academy" data-en="MIMHO Quiz Academy">MIMHO Quiz Academy</li>
+    <li data-pt="MIMHO PreSale" data-en="MIMHO PreSale">MIMHO PreSale</li>
+    <li data-pt="MIMHO Vesting" data-en="MIMHO Vesting">MIMHO Vesting</li>
+    <li data-pt="MIMHO Locker" data-en="MIMHO Locker">MIMHO Locker</li>
+    <li data-pt="MIMHO Events Hub (HUD)" data-en="MIMHO Events Hub (HUD)">MIMHO Events Hub</li>
+    <li data-pt="MIMHO Voting Controller" data-en="MIMHO Voting Controller">MIMHO Voting Controller</li>
+    <li data-pt="MIMHO Holder Distribution" data-en="MIMHO Holder Distribution">MIMHO Holder Distribution</li>
+    <li data-pt="MIMHO Trading Activity" data-en="MIMHO Trading Activity">MIMHO Trading Activity</li>
+    <li data-pt="MIMHO Airdrop" data-en="MIMHO Airdrop">MIMHO Airdrop</li>
+  </ul>
+</article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="5. CONTRATOS-CHAVE"
+                data-en="5. KEY CONTRACTS">5. CONTRATOS-CHAVE</span>
+          <span class="card-icon"><i class="fa-solid fa-cubes"></i></span>
+        </div>
+
+        <h2 data-pt="Registry e Events Hub (HUD)"
+            data-en="Registry and Events Hub (HUD)">
+          Registry e Events Hub (HUD)
+        </h2>
+
+        <p data-pt="MIMHO Registry: contrato raiz do ecossistema. Registra contratos oficiais, controla versões e garante descoberta on-chain. É a fonte única de verdade."
+           data-en="MIMHO Registry: the root contract of the ecosystem. It registers official contracts, controls versions, and ensures on-chain discovery. It is the single source of truth.">
+          <strong>MIMHO Registry:</strong> contrato raiz do ecossistema. Registra contratos oficiais, controla versões e garante descoberta on-chain. É a fonte única de verdade.
+        </p>
+
+        <p data-pt="MIMHO Events Hub (HUD): camada pública de transparência. Centraliza eventos, alimenta dashboards e permite auditoria social contínua. No MIMHO, nada acontece em silêncio."
+           data-en="MIMHO Events Hub (HUD): the public transparency layer. It centralizes events, powers dashboards, and enables continuous social auditing. In MIMHO, nothing happens silently.">
+          <strong>MIMHO Events Hub (HUD):</strong> camada pública de transparência. Centraliza eventos, alimenta dashboards e permite auditoria social contínua. No MIMHO, nada acontece em silêncio.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="6. DISTRIBUIÇÃO INICIAL"
+                data-en="6. INITIAL DISTRIBUTION">6. DISTRIBUIÇÃO INICIAL</span>
+          <span class="card-icon"><i class="fa-solid fa-rocket"></i></span>
+        </div>
+
+        <h2 data-pt="Regras imutáveis e rastreáveis"
+            data-en="Immutable, traceable rules">
+          Regras imutáveis e rastreáveis
+        </h2>
+
+        <p data-pt="Pré-venda: distribuição inicial controlada, vesting automático, regras imutáveis e ausência de privilégios ocultos. Objetivo: formar base real de holders e evitar especulação predatória."
+           data-en="Presale: controlled initial distribution, automatic vesting, immutable rules, and no hidden privileges. Goal: build a real holder base and avoid predatory speculation.">
+          <strong>Pré-venda:</strong> distribuição inicial controlada, vesting automático, regras imutáveis e ausência de privilégios ocultos. Objetivo: formar base real de holders e evitar especulação predatória.
+        </p>
+
+        <p data-pt="Airdrop: distribuição comunitária com critérios objetivos, eventos públicos e zero favoritismo."
+           data-en="Airdrop: community distribution with objective criteria, public events, and zero favoritism.">
+          <strong>Airdrop:</strong> distribuição comunitária com critérios objetivos, eventos públicos e zero favoritismo.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="7. SUPPLY & TOKENOMICS"
+                data-en="7. SUPPLY & TOKENOMICS">7. SUPPLY & TOKENOMICS</span>
+          <span class="card-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+        </div>
+
+        <h2 data-pt="Previsibilidade e eliminação de intervenção humana"
+            data-en="Predictability and elimination of human intervention">
+          Previsibilidade e eliminação de intervenção humana
+        </h2>
+
+        <p data-pt="Vesting: travas e liberações programadas. Nenhum token é liberado antes do tempo, fora das regras ou por decisão manual."
+           data-en="Vesting: programmed locks and releases. No token is released early, outside the rules, or by manual decision.">
+          <strong>Vesting:</strong> travas e liberações programadas. Nenhum token é liberado antes do tempo, fora das regras ou por decisão manual.
+        </p>
+
+        <p data-pt="Burn: queimas conscientes, governança on-chain, registro público e piso mínimo de supply imutável. Queimar não é marketing — é decisão econômica estruturada."
+           data-en="Burn: deliberate burns, on-chain governance, public records, and an immutable minimum supply floor. Burning is not marketing — it is structured economic policy.">
+          <strong>Burn:</strong> queimas conscientes, governança on-chain, registro público e piso mínimo de supply imutável. Queimar não é marketing — é decisão econômica estruturada.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="8. GOVERNANÇA"
+                data-en="8. GOVERNANCE">8. GOVERNANÇA</span>
+          <span class="card-icon"><i class="fa-solid fa-scale-balanced"></i></span>
+        </div>
+
+        <h2 data-pt="DAO progressiva e segura"
+            data-en="Progressive and secure DAO">
+          DAO progressiva e segura
+        </h2>
+
+        <p data-pt="A governança segue fases: controle inicial do fundador, transição automática e segura para a DAO e remoção de poderes administrativos do fundador."
+           data-en="Governance follows phases: initial founder control, an automatic and secure transition to the DAO, and removal of the founder’s administrative powers.">
+          A governança segue fases: controle inicial do fundador, transição automática e segura para a DAO e remoção de poderes administrativos do fundador.
+        </p>
+
+        <p data-pt="A DAO controla parâmetros do ecossistema, evolução dos contratos e futuros módulos."
+           data-en="The DAO controls ecosystem parameters, contract evolution, and future modules.">
+          A DAO controla parâmetros do ecossistema, evolução dos contratos e futuros módulos.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="9. UTILIDADE & OBSERVABILIDADE"
+                data-en="9. UTILITY & OBSERVABILITY">9. UTILIDADE & OBSERVABILIDADE</span>
+          <span class="card-icon"><i class="fa-solid fa-chart-line"></i></span>
+        </div>
+
+        <h2 data-pt="Engajamento real e transparência"
+            data-en="Real engagement and transparency">
+          Engajamento real e transparência
+        </h2>
+
+        <p data-pt="MIMHO Quiz: educação Web3, engajamento on-chain e recompensas rastreáveis."
+           data-en="MIMHO Quiz: Web3 education, on-chain engagement, and traceable rewards.">
+          <strong>MIMHO Quiz:</strong> educação Web3, engajamento on-chain e recompensas rastreáveis.
+        </p>
+
+        <p data-pt="MIMHO Staking: incentivo de longo prazo, recompensas previsíveis, proteções anti-abuso e integração com o ecossistema."
+           data-en="MIMHO Staking: long-term incentives, predictable rewards, anti-abuse protections, and ecosystem integration.">
+          <strong>MIMHO Staking:</strong> incentivo de longo prazo, recompensas previsíveis, proteções anti-abuso e integração com o ecossistema.
+        </p>
+
+        <p data-pt="Módulos opcionais: observabilidade neutra de atividade on-chain sem mover fundos, sem executar operações e sem oferecer incentivos financeiros diretos — apenas registrar e organizar dados públicos para transparência e gamificação."
+           data-en="Optional modules: neutral observability of on-chain activity without moving funds, executing operations, or offering direct financial incentives — only recording and organizing public data for transparency and gamification.">
+          <strong>Módulos opcionais:</strong> observabilidade neutra de atividade on-chain sem mover fundos, sem executar operações e sem oferecer incentivos financeiros diretos — apenas registrar e organizar dados públicos para transparência e gamificação.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="10. LIQUIDEZ & DEFI"
+                data-en="10. LIQUIDITY & DEFI">10. LIQUIDEZ & DEFI</span>
+          <span class="card-icon"><i class="fa-solid fa-water"></i></span>
+        </div>
+
+        <h2 data-pt="Controle seguro e auditável"
+            data-en="Secure and auditable control">
+          Controle seguro e auditável
+        </h2>
+
+        <p data-pt="Inject Liquidity: gestão controlada de liquidez, prevenção de manipulação e transparência total."
+           data-en="Inject Liquidity: controlled liquidity management, manipulation prevention, and total transparency.">
+          <strong>Inject Liquidity:</strong> gestão controlada de liquidez, prevenção de manipulação e transparência total.
+        </p>
+
+        <p data-pt="Locker: travas de tokens e LPs para uso interno e externo, como infraestrutura DeFi reutilizável."
+           data-en="Locker: token and LP locks for internal and external use, as reusable DeFi infrastructure.">
+          <strong>Locker:</strong> travas de tokens e LPs para uso interno e externo, como infraestrutura DeFi reutilizável.
+        </p>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="11. SEGURANÇA"
+                data-en="11. SECURITY">11. SEGURANÇA</span>
+          <span class="card-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        </div>
+
+        <h2 data-pt="Padrões rigorosos por design"
+            data-en="Strict standards by design">
+          Padrões rigorosos por design
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="Proteção contra reentrância" data-en="Reentrancy protection">Proteção contra reentrância</li>
+          <li data-pt="Controle via onlyDAOorOwner" data-en="onlyDAOorOwner control">Controle via onlyDAOorOwner</li>
+          <li data-pt="Eventos públicos obrigatórios" data-en="Mandatory public events">Eventos públicos obrigatórios</li>
+          <li data-pt="Mint desativado permanentemente" data-en="Mint permanently disabled">Mint desativado permanentemente</li>
+          <li data-pt="Ausência de funções administrativas perigosas" data-en="No dangerous admin functions">Ausência de funções administrativas perigosas</li>
+        </ul>
+      </article>
+
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="12. ROADMAP (RESUMO)"
+                data-en="12. ROADMAP (SUMMARY)">12. ROADMAP (RESUMO)</span>
+          <span class="card-icon"><i class="fa-solid fa-map"></i></span>
+        </div>
+
+        <h2 data-pt="Evolução contínua e governável"
+            data-en="Continuous, governable evolution">
+          Evolução contínua e governável
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="Deploy inicial dos 12 contratos fundacionais" data-en="Initial deployment of the 12 foundational contracts">Deploy inicial dos 12 contratos fundacionais</li>
+          <li data-pt="Evolução contínua: 1 novo contrato a cada ~60 dias" data-en="Continuous evolution: ~1 new contract every ~60 days">Evolução contínua: 1 novo contrato a cada ~60 dias</li>
+          <li data-pt="Sempre aprovado via DAO" data-en="Always approved via DAO">Sempre aprovado via DAO</li>
+          <li data-pt="Expansão futura: multi-chain e produtos MIMHO Labs" data-en="Future expansion: multi-chain and MIMHO Labs products">Expansão futura: multi-chain e produtos MIMHO Labs</li>
+        </ul>
+      </article>
+
+      <article class="manifesto-card full">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="13–14. POSICIONAMENTO & CONCLUSÃO"
+                data-en="13–14. POSITIONING & CONCLUSION">13–14. POSICIONAMENTO & CONCLUSÃO</span>
+          <span class="card-icon"><i class="fa-solid fa-flag-checkered"></i></span>
+        </div>
+
+        <h2 data-pt="Promessas não. Sistema."
+            data-en="No promises. A system.">
+          Promessas não. Sistema.
+        </h2>
+
+        <p data-pt="O MIMHO não promete lucro, valorização ou hype. O MIMHO entrega regras, código, transparência e sistema."
+           data-en="MIMHO does not promise profit, price appreciation, or hype. MIMHO delivers rules, code, transparency, and a system.">
+          O MIMHO não promete lucro, valorização ou hype. O MIMHO entrega regras, código, transparência e sistema.
+        </p>
+
+        <p style="color:#fff; font-weight:800; font-family:'Orbitron'; margin-top:16px;"
+           data-pt="Onde a Web3 deixa de ser promessa e vira sistema."
+           data-en="Where Web3 stops being a promise and becomes a system.">
+          Onde a Web3 deixa de ser promessa e vira sistema.
+        </p>
+      </article>
+
+    </section>
+
+    <footer>
+      <div class="footer-actions">
+        <a class="btn-ghost" href="index.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a class="btn-ghost" href="index.html"><i class="fa-solid fa-house"></i> HOME</a>
+      </div>
+
+      <div class="footer-contact">
+        <h4 data-pt="FALE CONOSCO" data-en="CONTACT US">FALE CONOSCO</h4>
+        <a class="footer-link" href="mailto:contact@mimho.io">contact@mimho.io</a>
+      </div>
+      
+      <a href="https://github.com/MIMHO-Ecosystem/mimho-core" target="_blank" class="footer-github">
+  <i class="fab fa-github"></i> GitHub
+</a>
+
+    </footer>
+
+  </main>
+
+  <script>
+    // ====== CONNECT placeholder ======
+    document.getElementById('connectBtn')?.addEventListener('click', () => {
+      alert("Connect Wallet: em breve (será ligado com Web3).");
+    });
+
+    // ====== LANGUAGE TOGGLE (EN default) ======
+    const LANG_KEY = "mimho_lang";
+    const toggleBtn = document.getElementById("langToggle");
+    const langLabel = document.getElementById("langLabel");
+
+    function applyLang(lang) {
+      const nodes = document.querySelectorAll("[data-pt][data-en]");
+      nodes.forEach(el => {
+        el.textContent = (lang === "pt") ? el.getAttribute("data-pt") : el.getAttribute("data-en");
+      });
+
+      // Atualiza label do botão
+      langLabel.textContent = (lang === "pt") ? "PT" : "EN";
+
+      // Atualiza atributo da página (bom para SEO/assistive tech)
+      document.documentElement.lang = (lang === "pt") ? "pt-BR" : "en";
+    }
+
+    function getSavedLang() {
+      const saved = localStorage.getItem(LANG_KEY);
+      return (saved === "pt" || saved === "en") ? saved : "en"; // default EN
+    }
+
+    let currentLang = getSavedLang();
+    applyLang(currentLang);
+
+    toggleBtn?.addEventListener("click", () => {
+      currentLang = (currentLang === "en") ? "pt" : "en";
+      localStorage.setItem(LANG_KEY, currentLang);
+      applyLang(currentLang);
+    });
+  </script>
+</body>
+</html>

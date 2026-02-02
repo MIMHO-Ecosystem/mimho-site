@@ -1,0 +1,14 @@
+Contact: mailto:security@mimho.com.br
+Contact: https://mimho.io/securitypolicy.html
+
+Encryption: https://mimho.io/pgp.txt
+
+Preferred-Languages: en, pt
+
+Policy: https://mimho.io/securitypolicy.html
+
+Hiring: https://mimho.io
+
+Acknowledgments: https://mimho.io/securitypolicy.html
+
+Scope: Website, Smart Contracts, Infrastructure

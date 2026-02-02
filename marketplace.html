@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ================== MIMHO MARKETPLACE — SEO / SOCIAL ================== -->
+
+<meta charset="UTF-8" />
+
+<title>MIMHO Marketplace – Official NFT Market on BNB Chain | On-Chain Trading</title>
+
+<meta name="description" content="MIMHO Marketplace is the official NFT marketplace of the MIMHO ecosystem on BNB Chain. Trade verified NFTs with on-chain transparency, immutable rules, royalties, and DAO-aligned governance." />
+
+<link rel="canonical" href="https://mimho.io/marketplace.html" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MIMHO Marketplace – Official NFT Market on BNB Chain" />
+<meta property="og:description" content="The official MIMHO NFT Marketplace: on-chain trading, verified collections, transparent royalties, and immutable smart contracts on BNB Chain." />
+<meta property="og:url" content="https://mimho.io/marketplace" />
+<meta property="og:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_MARKETPLACE" />
+<meta property="og:site_name" content="MIMHO" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MIMHO Marketplace – Official NFT Market" />
+<meta name="twitter:description" content="Trade NFTs on the official MIMHO Marketplace with on-chain security, transparent royalties, and DAO-aligned governance on BNB Chain." />
+<meta name="twitter:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_MARKETPLACE" />
+<meta name="twitter:site" content="@Mimho_Ecosystem" />
+
+<!-- Fonts / Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================== END MIMHO MARKETPLACE META ================== -->
+
+<style>
+:root{
+--orange:#ff8c00;
+--bg:#03040a;
+--glass:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.1);
+--text:#e5e5e5;
+}
+
+body{
+margin:0;
+font-family:'Space Grotesk',sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:rgba(3,4,10,0.9);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(--border);
+}
+
+.logo{
+font-family:'Orbitron';
+font-size:1.4rem;
+font-weight:800;
+color:var(--orange);
+}
+
+/* ============================================================
+   HEADER NAV LINKS (ADICIONADO) — NÃO REMOVE NADA
+   ============================================================ */
+.nav-links{
+display:flex;
+align-items:center;
+gap:18px;
+margin-left:30px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+color:#888;
+text-decoration:none;
+font-size:0.8rem;
+font-weight:700;
+transition:0.3s;
+letter-spacing:0.6px;
+}
+
+.nav-links a:hover{
+color:#fff;
+}
+/* ============================================================
+   HEADER NAV LINKS END
+   ============================================================ */
+
+.header-actions{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.btn-premium{
+background:linear-gradient(135deg,#ffb347,#ff8c00);
+color:#000;
+padding:10px 22px;
+border-radius:30px;
+border:none;
+font-family:'Orbitron';
+font-weight:700;
+font-size:0.7rem;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-premium:hover{
+transform:scale(1.07);
+box-shadow:0 0 18px rgba(255,140,0,0.5);
+}
+
+.lang-btn{
+cursor:pointer;
+border:1px solid var(--border);
+padding:6px 14px;
+border-radius:20px;
+font-size:0.75rem;
+}
+
+main{
+padding-top:110px;
+display:flex;
+max-width:1400px;
+margin:auto;
+}
+
+/* FILTERS */
+.filters{
+width:260px;
+padding:30px;
+border-right:1px solid var(--border);
+}
+
+.filters h3{
+font-family:'Orbitron';
+color:var(--orange);
+margin-bottom:15px;
+}
+
+.filter-group{
+margin-bottom:25px;
+}
+
+.filter-group label{
+display:block;
+font-size:0.8rem;
+margin-bottom:6px;
+color:#aaa;
+}
+
+.filter-group input,
+.filter-group select{
+width:100%;
+padding:8px;
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:8px;
+color:#fff;
+}
+
+/* MARKET */
+.market{
+flex:1;
+padding:30px;
+}
+
+.market-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.market-header h1{
+font-family:'Orbitron';
+color:var(--orange);
+}
+
+.nft-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:25px;
+}
+
+.nft-card{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:18px;
+padding:15px;
+transition:0.3s;
+position:relative;
+}
+
+.nft-card:hover{
+border-color:var(--orange);
+transform:translateY(-4px);
+}
+
+/* OFFICIAL NFT */
+.nft-card.official{
+border:1px solid var(--orange);
+box-shadow:0 0 20px rgba(255,140,0,0.25);
+}
+
+.official-badge{
+position:absolute;
+top:10px;
+right:10px;
+background:var(--orange);
+color:#000;
+font-size:0.55rem;
+font-weight:800;
+padding:4px 8px;
+border-radius:10px;
+font-family:'Orbitron';
+}
+
+.nft-image{
+height:180px;
+border-radius:12px;
+background:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:0.7rem;
+color:#666;
+margin-bottom:10px;
+}
+
+.nft-title{
+font-weight:700;
+font-size:0.9rem;
+margin-bottom:6px;
+}
+
+.nft-price{
+font-size:0.8rem;
+color:#aaa;
+}
+
+/* PAGINATION */
+.pagination{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:40px;
+}
+
+.pagination button{
+background:transparent;
+border:1px solid var(--border);
+color:#fff;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+font-size:0.75rem;
+}
+
+.pagination button:hover{
+border-color:var(--orange);
+color:var(--orange);
+}
+
+/* FOOTER */
+footer{
+padding:60px 8%;
+text-align:center;
+border-top:1px solid #111;
+color:#666;
+font-size:0.85rem;
+margin-top:80px;
+}
+
+/* ============================================================
+   FOOTER CONTACT (ADICIONADO) — NÃO REMOVE NADA
+   ============================================================ */
+.footer-contact{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+
+.footer-btn{
+  background:linear-gradient(135deg,#ffb347,#ff8c00);
+  border:none;
+  color:#000;
+  padding:10px 26px;
+  border-radius:30px;
+  font-family:'Orbitron';
+  font-weight:800;
+  font-size:0.75rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.footer-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 18px rgba(255,140,0,0.4);
+}
+
+.footer-email{
+  font-size:0.85rem;
+  color:#aaa;
+  letter-spacing:0.5px;
+}
+
+.footer-github{
+  margin-top:6px;
+  text-decoration:none;
+  color:#fff;
+  font-size:0.8rem;
+  border:1px solid var(--border);
+  padding:8px 18px;
+  border-radius:22px;
+  transition:0.3s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.footer-github:hover{
+  border-color:var(--orange);
+  color:var(--orange);
+}
+/* ============================================================
+   FOOTER CONTACT END
+   ============================================================ */
+
+/* DARK SELECT FIX */
+.filter-group select{
+appearance:none;
+background:var(--glass);
+color:#fff;
+}
+
+.filter-group select option{
+background:#05070f;
+color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">MIMHO</div>
+
+<!-- ============================================================
+     HEADER NAV (ADICIONADO) — NÃO REMOVE NADA
+     ============================================================ -->
+<nav class="nav-links">
+  <a href="/index.html" data-en="HOME" data-pt="HOME">HOME</a>
+  <a href="/roadmap.html" data-en="ROADMAP" data-pt="ROADMAP">ROADMAP</a>
+  <a href="/manifesto.html" data-en="MANIFESTO" data-pt="MANIFESTO">MANIFESTO</a>
+  <a href="/whitepaper.html" data-en="WHITEPAPER" data-pt="WHITEPAPER">WHITEPAPER</a>
+</nav>
+<!-- ============================================================
+     HEADER NAV END
+     ============================================================ -->
+
+<div class="header-actions">
+<button class="btn-premium" data-en="CREATE LISTING" data-pt="CRIAR LISTAGEM">
+CREATE LISTING
+</button>
+
+<div class="lang-btn" onclick="toggleLanguage()">
+<span id="lang">EN</span>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- FILTERS -->
+<aside class="filters">
+<h3 data-en="Filters" data-pt="Filtros">Filters</h3>
+
+<div class="filter-group">
+<label data-en="Search NFT" data-pt="Buscar NFT">Search NFT</label>
+<input type="text" placeholder="NFT name / ID">
+</div>
+
+<div class="filter-group">
+<label data-en="Price Order" data-pt="Ordenar por Preço">Price Order</label>
+<select>
+<option data-en="Lowest price" data-pt="Menor preço">Lowest price</option>
+<option data-en="Highest price" data-pt="Maior preço">Highest price</option>
+</select>
+</div>
+
+<div class="filter-group">
+<label data-en="Rarity" data-pt="Raridade">Rarity</label>
+<select>
+<option>Any</option>
+<option>Common</option>
+<option>Rare</option>
+<option>Epic</option>
+<option>Legendary</option>
+</select>
+</div>
+
+<div class="filter-group">
+  <label data-en="Utility Type" data-pt="Tipo de Utilidade">
+    Utility Type
+  </label>
+  <select>
+    <option data-en="All Utilities" data-pt="Todas Utilidades">
+      All Utilities
+    </option>
+    <option data-en="Staking Bonus" data-pt="Bônus de Staking">
+      Staking Bonus
+    </option>
+    <option data-en="Governance Power" data-pt="Poder de Governança">
+      Governance Power
+    </option>
+    <option data-en="Game / Evolution" data-pt="Jogo / Evolução">
+      Game / Evolution
+    </option>
+    <option data-en="Access / VIP" data-pt="Acesso / VIP">
+      Access / VIP
+    </option>
+    <option data-en="Collectible Only" data-pt="Somente Colecionável">
+      Collectible Only
+    </option>
+  </select>
+</div>
+
+<div class="filter-group">
+<label>
+<input type="checkbox" id="filterOfficial">
+<span data-en="MIMHO Official NFTs" data-pt="NFTs Oficiais MIMHO">
+MIMHO Official NFTs
+</span>
+</label>
+</div>
+
+</aside>
+
+<!-- MARKET -->
+<section class="market">
+<div class="market-header">
+<h1 data-en="NFT Marketplace" data-pt="Marketplace de NFTs">
+NFT Marketplace
+</h1>
+</div>
+
+<div class="nft-grid">
+
+<div class="nft-card official">
+<div class="official-badge">OFFICIAL</div>
+<div class="nft-image">NFT IMAGE</div>
+<div class="nft-title">MIMHO Genesis #1</div>
+<div class="nft-price">Price: 1.200 MIMHO</div>
+</div>
+
+<div class="nft-card">
+<div class="nft-image">NFT IMAGE</div>
+<div class="nft-title">Community NFT #22</div>
+<div class="nft-price">Price: 480 MIMHO</div>
+</div>
+
+</div>
+
+<div class="pagination">
+<button>⏮</button>
+<button>◀</button>
+<button>1 / 500</button>
+<button>▶</button>
+<button>⏭</button>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<span data-en="In MIMHO, even NFTs follow the code."
+      data-pt="Na MIMHO, até NFTs seguem o código.">
+In MIMHO, even NFTs follow the code.
+</span>
+
+<!-- ============================================================
+     FOOTER CONTACT (ADICIONADO) — NÃO REMOVE NADA
+     ============================================================ -->
+<div class="footer-contact">
+
+  <button class="footer-btn" onclick="window.location.href='mailto:contato@mimho.com.br'">
+    Fale Conosco
+  </button>
+
+  <div class="footer-email">
+    contato@mimho.com.br
+  </div>
+
+  <a href="https://github.com/MIMHO-Ecosystem/mimho-core" target="_blank" class="footer-github">
+    <span>VIEW GITHUB</span>
+  </a>
+
+</div>
+<!-- ============================================================
+     FOOTER CONTACT END
+     ============================================================ -->
+
+</footer>
+
+<script>
+let lang = 'en';
+
+function toggleLanguage(){
+lang = lang === 'en' ? 'pt' : 'en';
+document.getElementById('lang').innerText = lang.toUpperCase();
+document.querySelectorAll('[data-en]').forEach(el=>{
+el.textContent = el.getAttribute(`data-${lang}`);
+});
+}
+
+const officialCheckbox = document.getElementById('filterOfficial');
+
+officialCheckbox.addEventListener('change', () => {
+const cards = document.querySelectorAll('.nft-card');
+
+cards.forEach(card => {
+if (officialCheckbox.checked) {
+card.style.display = card.classList.contains('official') ? 'block' : 'none';
+} else {
+card.style.display = 'block';
+}
+});
+});
+</script>
+
+</body>
+</html>

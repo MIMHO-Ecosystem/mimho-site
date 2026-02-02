@@ -1,0 +1,33 @@
+/* TEAM */
+Founder & Architect: MIMHO Core
+Location: Planet Earth (Preparing for Mars)
+Contact: contato@mimho.com.br
+
+/* PHILOSOPHY */
+MIMHO stands for "Mars Is My House".
+We believe in long-term thinking, on-chain transparency,
+immutable rules, and community-driven governance.
+No shortcuts. No empty promises. Code is law.
+
+/* ECOSYSTEM */
+Blockchain: BNB Chain
+Architecture: Fully on-chain modular ecosystem
+Governance: DAO (progressive activation)
+Security: Liquidity locked, vesting enforced, auditable contracts
+
+/* CONTENT */
+Education: MIMHO Academy
+Governance: MIMHO DAO
+Infrastructure: Registry, Events Hub, Strategy Hub
+DeFi Modules: Staking, Vesting, Liquidity Control
+Social Impact: MIMHO Adoption Initiative
+
+/* THANKS */
+To every builder, holder, validator and explorer
+who believes the future is built step by step.
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Hosting: Cloudflare
+Language: EN (default), PT-BR
+Last update: 2026-02-01

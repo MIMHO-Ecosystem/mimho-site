@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ================== MIMHO PRESALE — SEO / SOCIAL ================== -->
+
+<meta charset="UTF-8" />
+
+<title>MIMHO Presale – Early Access on BNB Chain | On-Chain Presale & Vesting</title>
+
+<meta name="description" content="MIMHO Presale is the official early access phase of the MIMHO ecosystem on BNB Chain. The presale is fully on-chain with transparent rules, automatic vesting, locked liquidity, and DAO-aligned governance." />
+
+<link rel="canonical" href="https://mimho.io/presale.html" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MIMHO Presale – Official On-Chain Presale" />
+<meta property="og:description" content="Join the official MIMHO presale on BNB Chain. Fully on-chain presale with immutable rules, automatic vesting, locked liquidity, and maximum transparency." />
+<meta property="og:url" content="https://mimho.io/presale" />
+<meta property="og:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_PRESALE" />
+<meta property="og:site_name" content="MIMHO" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MIMHO Presale – Official On-Chain Presale" />
+<meta name="twitter:description" content="The official MIMHO presale on BNB Chain with immutable smart contracts, automatic vesting, and locked liquidity from day one." />
+<meta name="twitter:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_PRESALE" />
+<meta name="twitter:site" content="@Mimho_Ecosystem" />
+
+<!-- Fonts / Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================== END MIMHO PRESALE META ================== -->
+
+<style>
+/* === TEMPLATE ORIGINAL  === */
+:root{
+--orange-glow:#ff8c00;
+--orange-deep:#ff4500;
+--dark-bg:#03040a;
+--glass-bg:rgba(255,255,255,0.04);
+--glass-border:rgba(255,255,255,0.08);
+--text-silver:#e0e0e0;
+}
+
+body{
+margin:0;
+background:var(--dark-bg);
+color:var(--text-silver);
+font-family:'Space Grotesk',sans-serif;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+position:fixed;
+top:0;
+left:0;
+right:0;
+background:rgba(3,4,10,0.9);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(--glass-border);
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-family:'Orbitron';
+font-weight:900;
+font-size:1.6rem;
+background:linear-gradient(90deg,#fff,var(--orange-glow));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links a{
+color:#888;
+text-decoration:none;
+margin-right:25px;
+font-size:0.85rem;
+font-weight:600;
+transition:0.3s;
+}
+
+.nav-links a:hover{color:#fff}
+
+.lang-btn{
+cursor:pointer;
+color:#fff;
+font-size:0.75rem;
+border:1px solid #333;
+padding:6px 14px;
+border-radius:20px;
+}
+
+.btn-premium{
+background:linear-gradient(135deg,var(--orange-glow),var(--orange-deep));
+color:#000;
+padding:12px 28px;
+border-radius:50px;
+border:none;
+font-family:'Orbitron';
+font-weight:700;
+font-size:0.75rem;
+cursor:pointer;
+transition:0.3s;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
+
+.btn-premium.secondary{
+background:transparent;
+border:2px solid var(--orange-glow);
+color:#fff;
+}
+
+.btn-premium:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,140,0,0.4);
+}
+
+main{padding-top:120px}
+
+.hero{
+padding:80px 8% 40px;
+max-width:1200px;
+margin:auto;
+}
+
+.hero h1{
+font-size:3rem;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero p{
+color:#aaa;
+max-width:750px;
+font-size:1.05rem;
+font-family:'Inter',sans-serif;
+line-height:1.75;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.module-image{
+margin:60px auto;
+max-width:900px;
+border-radius:24px;
+overflow:hidden;
+border:1px solid var(--glass-border);
+background:var(--glass-bg);
+height:380px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#555;
+font-family:'Orbitron';
+letter-spacing:2px;
+}
+
+/* ============================================================
+   MIMHO MODULE IMAGE — PINATA BACKGROUND (ADICIONADO)
+   - Não apaga nada
+   - Mantém o HTML igual
+   - Só coloca a imagem como background
+   ============================================================ */
+.module-image{
+  position: relative;
+  background-image: url("https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/bafkreiampouietlzp3ky7jdrgpoatssjdtmxndit7ed4wkeapcvpmcitbq");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* overlay leve pra combinar com o tema (não interfere no layout) */
+.module-image::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 20% 10%, rgba(255,140,0,0.12), transparent 55%),
+              radial-gradient(circle at 85% 30%, rgba(0,71,255,0.10), transparent 55%),
+              linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.55));
+  pointer-events:none;
+}
+
+/* mantém o texto no HTML (não remove), mas não deixa visível em cima da imagem */
+.module-image{
+  color: transparent;
+  text-shadow: none;
+}
+/* ============================================================
+   MIMHO MODULE IMAGE — END
+   ============================================================ */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+padding:60px 8%;
+}
+
+.info-card{
+background:var(--glass-bg);
+border:1px solid var(--glass-border);
+border-radius:24px;
+padding:35px;
+transition:0.3s;
+}
+
+.info-card:hover{
+border-color:var(--orange-glow);
+transform:translateY(-6px);
+}
+
+.info-card h3{
+font-family:'Orbitron';
+color:var(--orange-glow);
+margin-bottom:15px;
+}
+
+.section{
+padding:80px 8%;
+max-width:1100px;
+margin:auto;
+}
+
+.section h2{
+font-family:'Orbitron';
+color:var(--orange-glow);
+margin-bottom:25px;
+}
+
+.section p{
+color:#bbb;
+line-height:1.8;
+font-family:'Inter',sans-serif;
+}
+
+.status-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.status-box{
+background:var(--glass-bg);
+border:1px solid var(--glass-border);
+border-radius:18px;
+padding:20px;
+font-size:0.9rem;
+transition:0.3s;
+}
+
+.status-box:hover{
+border-color:var(--orange-glow);
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(255,140,0,0.15);
+}
+
+.ecosystem{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:25px;
+}
+
+.ecosystem a{
+text-decoration:none;
+color:#fff;
+border:1px solid var(--glass-border);
+padding:10px 18px;
+border-radius:20px;
+font-size:0.75rem;
+transition:0.3s;
+}
+
+.ecosystem a:hover{
+border-color:var(--orange-glow);
+color:var(--orange-glow);
+}
+
+footer{
+padding:60px 8%;
+text-align:center;
+border-top:1px solid #111;
+color:#666;
+font-size:0.85rem;
+}
+
+/* ============================================================
+   MIMHO WALLET CONNECT START — ADICIONADO (NÃO REMOVE NADA)
+   ============================================================ */
+.header-right{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.wallet-btn{
+cursor:pointer;
+border:none;
+padding:8px 16px;
+border-radius:22px;
+font-family:'Orbitron';
+font-weight:700;
+font-size:0.72rem;
+background:linear-gradient(135deg,var(--orange-glow),var(--orange-deep));
+color:#000;
+transition:0.3s;
+}
+
+.wallet-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,140,0,0.35);
+}
+
+.wallet-btn.connected{
+background:transparent;
+border:2px solid var(--orange-glow);
+color:#fff;
+}
+/* ============================================================
+   MIMHO WALLET CONNECT END
+   ============================================================ */
+
+/* ============================================================
+   MIMHO FOOTER CONTACT STYLE START — ADICIONADO (NÃO REMOVE NADA)
+   ============================================================ */
+.footer-contact{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+
+.footer-btn{
+  background:linear-gradient(135deg,var(--orange-glow),var(--orange-deep));
+  border:none;
+  color:#000;
+  padding:10px 26px;
+  border-radius:30px;
+  font-family:'Orbitron';
+  font-weight:700;
+  font-size:0.75rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.footer-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 18px rgba(255,140,0,0.4);
+}
+
+.footer-email{
+  font-size:0.85rem;
+  color:#aaa;
+  letter-spacing:0.5px;
+}
+
+.footer-github{
+  margin-top:6px;
+  text-decoration:none;
+  color:#fff;
+  font-size:0.8rem;
+  border:1px solid var(--glass-border);
+  padding:8px 18px;
+  border-radius:22px;
+  transition:0.3s;
+}
+
+.footer-github i{
+  margin-right:6px;
+}
+
+.footer-github:hover{
+  border-color:var(--orange-glow);
+  color:var(--orange-glow);
+}
+/* ============================================================
+   MIMHO FOOTER CONTACT STYLE END
+   ============================================================ */
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">MIMHO</div>
+
+<nav class="nav-links">
+  <a href="/index.html" data-en="HOME" data-pt="HOME">HOME</a>
+  <a href="/manifesto.html" data-en="MANIFESTO" data-pt="MANIFESTO">MANIFESTO</a>
+  <a href="/roadmap.html" data-en="ROADMAP" data-pt="ROADMAP">ROADMAP</a>
+  <a href="/whitepaper.html" data-en="WHITEPAPER" data-pt="WHITEPAPER">WHITEPAPER</a>
+</nav>
+
+<!-- ============================================================
+     MIMHO WALLET CONNECT START — ADICIONADO (NÃO REMOVE NADA)
+     ============================================================ -->
+<div class="header-right">
+  <div class="lang-btn" onclick="toggleLanguage()">
+    <span id="lang-label">EN</span>
+  </div>
+
+  <button id="connectWalletBtn" class="wallet-btn" data-en="CONNECT WALLET" data-pt="CONECTAR WALLET">
+    CONNECT WALLET
+  </button>
+</div>
+<!-- ============================================================
+     MIMHO WALLET CONNECT END
+     ============================================================ -->
+
+</header>
+
+<main>
+
+<section class="hero">
+  <h1 data-en="MIMHO Presale" data-pt="Pré-Venda MIMHO">MIMHO Presale</h1>
+
+  <p data-en="The Presale module enables fair early access under strict on-chain rules. No hidden decisions. Clear allocation. Transparent flow."
+     data-pt="O módulo de Pré-Venda permite acesso antecipado de forma justa e sob regras rígidas on-chain. Sem decisões escondidas. Alocação clara. Fluxo transparente.">
+    The Presale module enables fair early access under strict on-chain rules. No hidden decisions. Clear allocation. Transparent flow.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="COLE_AQUI_O_LINK_DA_PRESALE_OU_APP" class="btn-premium" data-en="OPEN PRESALE" data-pt="ABRIR PRÉ-VENDA">
+      OPEN PRESALE
+    </a>
+
+    <a href="https://github.com/MIMHO-Ecosystem/mimho-core/blob/main/contracts/MIMHO_PreSale.md"
+       target="_blank"
+       rel="noopener"
+       class="btn-premium secondary"
+       data-en="VIEW PRESALE RULES"
+       data-pt="VER REGRAS DA PRÉ-VENDA">
+      VIEW PRESALE RULES
+    </a>
+
+    <a href="COLE_AQUI_O_LINK_DO_CONTRATO_NA_BSCSCAN"
+       target="_blank"
+       rel="noopener"
+       class="btn-premium secondary"
+       data-en="VIEW CONTRACT"
+       data-pt="VER CONTRATO">
+      VIEW CONTRACT
+    </a>
+  </div>
+</section>
+
+<div class="module-image">
+PRESALE MODULE IMAGE
+</div>
+
+<section class="cards">
+  <div class="info-card">
+    <h3 data-en="Purpose" data-pt="Propósito">Purpose</h3>
+    <p data-en="Enable a fair early phase with clear rules and auditable execution, protecting the community from improvisation."
+       data-pt="Permitir uma fase inicial justa com regras claras e execução auditável, protegendo a comunidade de improvisos.">
+      Enable a fair early phase with clear rules and auditable execution, protecting the community from improvisation.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3 data-en="Vesting & Delivery" data-pt="Vesting & Entrega">Vesting & Delivery</h3>
+    <p data-en="Tokens are delivered via transparent on-chain logic. If vesting applies, releases follow deterministic schedules — no manual favoritism."
+       data-pt="Tokens são entregues com lógica transparente on-chain. Se houver vesting, as liberações seguem cronograma determinístico — sem favorecimento manual.">
+      Tokens are delivered via transparent on-chain logic. If vesting applies, releases follow deterministic schedules — no manual favoritism.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3 data-en="Security First" data-pt="Segurança Primeiro">Security First</h3>
+    <p data-en="The presale is designed to minimize risk: verifiable rules, public events, and a clear path to liquidity creation."
+       data-pt="A pré-venda é projetada para minimizar risco: regras verificáveis, eventos públicos e caminho claro até a criação de liquidez.">
+      The presale is designed to minimize risk: verifiable rules, public events, and a clear path to liquidity creation.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 data-en="How it Works" data-pt="Como Funciona">How it Works</h2>
+
+  <p data-en="This module collects contributions under predefined conditions and routes execution through the ecosystem’s launch pipeline. No promises of profit. Only structure."
+     data-pt="Este módulo recebe contribuições sob condições pré-definidas e roteia a execução pelo pipeline de lançamento do ecossistema. Sem promessa de lucro. Apenas estrutura.">
+    This module collects contributions under predefined conditions and routes execution through the ecosystem’s launch pipeline. No promises of profit. Only structure.
+  </p>
+
+  <div class="status-grid">
+    <div class="status-box" data-en="Network: BNB Chain" data-pt="Rede: BNB Chain">Network: BNB Chain</div>
+    <div class="status-box" data-en="Mode: Fair launch rules" data-pt="Modo: Regras de fair launch">Mode: Fair launch rules</div>
+    <div class="status-box" data-en="Transparency: On-chain events" data-pt="Transparência: Eventos on-chain">Transparency: On-chain events</div>
+    <div class="status-box" data-en="Governance: DAO-ready" data-pt="Governança: Pronto para DAO">Governance: DAO-ready</div>
+  </div>
+</section>
+
+<!-- ================== MUSIC SECTION (MESMO DO AIRDROP) ================== -->
+<section class="section">
+  <h2 data-en="Learn with Music" data-pt="Aprenda com Música">Learn with Music</h2>
+
+  <p data-en="Want a different way to understand the Presale logic? Listen to the official MIMHO Presale music on YouTube."
+     data-pt="Quer uma forma diferente de entender a lógica da Pré-Venda? Ouça a música oficial de Pré-Venda da MIMHO no YouTube.">
+    Want a different way to understand the Presale logic? Listen to the official MIMHO Presale music on YouTube.
+  </p>
+
+  <div class="hero-buttons" style="margin-top:15px;">
+    <a href="https://youtu.be/JDXym7peKQk?si=EPctUZRcmBNkXiQL"
+       target="_blank"
+       rel="noopener"
+       class="btn-premium secondary"
+       data-en="🎶 WATCH ON YOUTUBE"
+       data-pt="🎶 VER NO YOUTUBE">
+      🎶 WATCH ON YOUTUBE
+    </a>
+  </div>
+</section>
+<!-- ================== MUSIC SECTION END ================== -->
+
+<section class="section">
+  <h2 data-en="Ecosystem Links" data-pt="Links do Ecossistema">Ecosystem Links</h2>
+
+  <p data-en="Navigate across the MIMHO launch stack and core modules."
+     data-pt="Navegue pela stack de lançamento e módulos centrais do MIMHO.">
+    Navigate across the MIMHO launch stack and core modules.
+  </p>
+
+  <div class="ecosystem">
+    <a href="/token.html" data-en="MIMHO Token" data-pt="Token MIMHO">MIMHO Token</a>
+    <a href="/vesting.html" data-en="Vesting" data-pt="Vesting">Vesting</a>
+    <a href="/liquiditybootstrapper.html" data-en="Liquidity Bootstrapper" data-pt="Liquidity Bootstrapper">Liquidity Bootstrapper</a>
+    <a href="/injectliquidity.html" data-en="Inject Liquidity" data-pt="Inject Liquidity">Inject Liquidity</a>
+    <a href="/dao.html" data-en="DAO" data-pt="DAO">DAO</a>
+    <a href="/livemarket.html" data-en="Live Market" data-pt="Mercado ao Vivo">Live Market</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span data-en="In MIMHO, launch is engineered — not improvised."
+        data-pt="Na MIMHO, o lançamento é engenharia — não improviso.">
+    In MIMHO, launch is engineered — not improvised.
+  </span>
+
+  <!-- ============================================================
+       MIMHO FOOTER CONTACT START — ADICIONADO (NÃO REMOVE NADA)
+       ============================================================ -->
+  <div class="footer-contact">
+
+    <button class="footer-btn" onclick="window.location.href='mailto:contato@mimho.com.br'">
+      <span data-en="Contact Us" data-pt="Fale Conosco">Contact Us</span>
+    </button>
+
+    <div class="footer-email">
+      contato@mimho.com.br
+    </div>
+
+    <a href="https://github.com/MIMHO-Ecosystem/mimho-core" target="_blank" class="footer-github">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+
+  </div>
+  <!-- ============================================================
+       MIMHO FOOTER CONTACT END
+       ============================================================ -->
+</footer>
+
+<!-- ============================================================
+     MIMHO WALLET CONNECT START — ethers.js + MetaMask (ADICIONADO)
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.umd.min.js"></script>
+<!-- ============================================================
+     MIMHO WALLET CONNECT END
+     ============================================================ -->
+
+<!-- ============================================================
+     LANGUAGE SCRIPT (EN DEFAULT + PERSISTÊNCIA) — PADRÃO APROVADO
+     ============================================================ -->
+<script>
+  const LANG_KEY = "mimho_lang";
+  let currentLang = localStorage.getItem(LANG_KEY);
+  if(currentLang !== "pt" && currentLang !== "en") currentLang = "en";
+
+  function applyLanguage(lang){
+    document.getElementById('lang-label').innerText = lang.toUpperCase();
+    document.querySelectorAll('[data-en][data-pt]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`) || el.textContent;
+    });
+  }
+
+  function toggleLanguage(){
+    currentLang = (currentLang === "en") ? "pt" : "en";
+    localStorage.setItem(LANG_KEY, currentLang);
+    applyLanguage(currentLang);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    applyLanguage(currentLang);
+  });
+</script>
+
+<!-- ============================================================
+     MIMHO WALLET CONNECT START — LÓGICA (ADICIONADO)
+     - Não apaga nada
+     - Conecta MetaMask
+     - Checa BNB Chain (56)
+     ============================================================ -->
+<script>
+(async function(){
+  const btn = document.getElementById("connectWalletBtn");
+  if(!btn) return;
+
+  function shortAddr(a){ return a ? (a.slice(0,6)+"..."+a.slice(-4)) : ""; }
+
+  async function connectWallet(){
+    if(!window.ethereum){
+      alert("MetaMask não encontrada. Instale a MetaMask.");
+      return;
+    }
+
+    try{
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+
+      const network = await provider.getNetwork();
+      if(network.chainId !== 56n){
+        alert("Conecte na BNB Smart Chain (BSC).");
+      }
+
+      btn.textContent = shortAddr(address);
+      btn.classList.add("connected");
+      console.log("Carteira conectada:", address);
+    }catch(err){
+      console.error(err);
+      alert("Conexão cancelada.");
+    }
+  }
+
+  // Auto-detect se já está conectado (sem popup)
+  try{
+    if(window.ethereum){
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_accounts", []);
+      if(accounts && accounts.length){
+        btn.textContent = shortAddr(accounts[0]);
+        btn.classList.add("connected");
+      }
+    }
+  }catch(e){}
+
+  // Detecta mudança de conta
+  if(window.ethereum && window.ethereum.on){
+    window.ethereum.on("accountsChanged", (accs)=>{
+      if(accs && accs.length){
+        btn.textContent = shortAddr(accs[0]);
+        btn.classList.add("connected");
+      }else{
+        btn.textContent = (currentLang === "pt") ? "CONECTAR WALLET" : "CONNECT WALLET";
+        btn.classList.remove("connected");
+      }
+    });
+  }
+
+  btn.addEventListener("click", connectWallet);
+})();
+</script>
+<!-- ============================================================
+     MIMHO WALLET CONNECT END
+     ============================================================ -->
+
+</body>
+</html>

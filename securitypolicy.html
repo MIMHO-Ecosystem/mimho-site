@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="MIMHO Security Policy — responsible disclosure, reporting channels, scope, and guidelines for vulnerabilities affecting the MIMHO ecosystem." />
+  <title>MIMHO Security Policy | Responsible Disclosure & Reporting</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://mimho.io/security-policy.html" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MIMHO Security Policy" />
+  <meta property="og:description" content="Responsible disclosure guidelines and reporting channels for vulnerabilities affecting the MIMHO ecosystem." />
+  <meta property="og:url" content="https://mimho.io/security-policy.html" />
+  <meta property="og:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy" />
+  <meta property="og:site_name" content="MIMHO" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MIMHO Security Policy" />
+  <meta name="twitter:description" content="Responsible disclosure guidelines and reporting channels for vulnerabilities affecting the MIMHO ecosystem." />
+  <meta name="twitter:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy" />
+  <meta name="twitter:site" content="@Mimho_Ecosystem" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --orange-glow: #ff8c00;
+      --orange-deep: #ff4500;
+      --mimho-blue: #0047ff;
+      --dark-bg: #03040a;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-silver: #e0e0e0;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-silver);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+    .ambient-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 8%;
+      background: rgba(3, 4, 10, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    }
+    .logo-text {
+      font-family: 'Orbitron';
+      font-weight: 900;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #fff, var(--orange-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo-wrapper { display: flex; align-items: center; gap: 10px; }
+    .logo-wrapper img { height: 32px; width: auto; }
+
+    .nav-links a {
+      color: #888; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      margin-right: 25px; transition: 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    .btn-premium {
+      background: linear-gradient(135deg, var(--orange-glow), var(--orange-deep));
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-premium:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 140, 0, 0.4); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--orange-glow);
+      color: #fff;
+    }
+
+    .analytics-bar {
+      background: #000;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #111;
+      font-family: 'Orbitron';
+      font-size: 0.7rem;
+      color: #555;
+      margin-top: 80px;
+    }
+    .analytics-item span { color: var(--orange-glow); margin-left: 8px; }
+
+    /* Floating buttons */
+    .music-control {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 9999;
+      background: rgba(0,0,0,0.8);
+      border: 1px solid var(--orange-glow);
+      color: var(--orange-glow);
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+      user-select: none;
+      pointer-events: auto;
+    }
+    .music-control:hover { transform: scale(1.05); box-shadow: 0 0 18px rgba(255, 140, 0, 0.25); }
+    .music-control * { pointer-events: none; }
+
+    .ai-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      background: var(--orange-glow);
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255,140,0,0.4);
+      color: #000;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+    .ai-float:hover { transform: scale(1.05); }
+
+    /* HUD */
+    .hud-container {
+      background: radial-gradient(circle at center, rgba(10, 10, 20, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+      border: 2px solid var(--orange-glow);
+      border-radius: 5px;
+      padding: 25px;
+      margin: 0 8% 40px 8%;
+      font-family: 'Courier New', Courier, monospace;
+      box-shadow: 0 0 30px rgba(255, 140, 0, 0.15), inset 0 0 20px rgba(255, 140, 0, 0.1);
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+      clip-path: polygon(0% 5%, 2% 0%, 98% 0%, 100% 5%, 100% 95%, 98% 100%, 2% 100%, 0% 95%);
+    }
+    .hud-container::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: 0; right: 0;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(255, 140, 0, 0.05), transparent);
+      animation: scanline-move 8s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes scanline-move { 0% { top: -100%; } 100% { top: 100%; } }
+
+    .hud-header {
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--orange-glow);
+      font-size: 0.75rem;
+      font-family: 'Orbitron';
+      border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--orange-glow);
+    }
+    .hud-feed { display: flex; flex-direction: column-reverse; height: 200px; overflow-y: hidden; }
+    .hud-line {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      color: #00ff88;
+      animation: glitch-in 0.3s ease-out;
+      display: flex; align-items: flex-start; gap: 15px;
+    }
+    .hud-line span { color: var(--orange-glow); font-size: 0.75rem; min-width: 85px; font-weight: bold; }
+    @keyframes glitch-in {
+      0% { opacity: 0; transform: translateX(-20px); filter: blur(5px); }
+      100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+    }
+
+    /* Page sections */
+    .page-hero{
+      padding: 110px 8% 20px;
+    }
+    .hero-tag{
+      color: var(--orange-glow);
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family: 'Orbitron';
+      font-size: 0.85rem;
+      opacity: 0.95;
+    }
+    .hero-title{
+      font-size: 3.0rem;
+      line-height: 1.1;
+      margin: 16px 0 10px;
+    }
+    .hero-sub{
+      color:#888;
+      font-size: 1.05rem;
+      max-width: 920px;
+      line-height: 1.7;
+    }
+
+    .grid-section{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 24px 8% 70px;
+    }
+    .info-card{
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 28px;
+      border-radius: 22px;
+      transition: 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card:hover { border-color: var(--orange-glow); transform: translateY(-4px); }
+    .info-card h3{
+      font-family: 'Orbitron';
+      color: var(--orange-glow);
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+    .info-card p{
+      margin: 0;
+      color:#b9b9b9;
+      font-family:'Inter', sans-serif;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    .badge{
+      display:inline-block;
+      font-size: 0.72rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,140,0,0.35);
+      background: rgba(255,140,0,0.08);
+      color: var(--orange-glow);
+      margin-bottom: 14px;
+      font-family:'Orbitron';
+      letter-spacing: 1px;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color:#b9b9b9;
+      font-family:'Inter',sans-serif;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .inline-code{
+      font-family: 'Courier New', monospace;
+      color:#fff;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      display:inline-block;
+    }
+
+    footer { padding: 60px 8%; border-top: 1px solid #111; text-align: center; margin-top: 10px; }
+    .footer-contact { margin-top: 26px; border-top: 1px solid #222; padding-top: 18px; }
+    .footer-contact h4 { font-family: 'Orbitron'; font-size: 0.8rem; color: var(--orange-glow); letter-spacing: 2px; margin: 0 0 10px; }
+    .footer-link { color: #fff; text-decoration: none; font-family: 'Inter'; font-size: 0.95rem; transition: 0.3s; }
+    .footer-link:hover { color: var(--orange-glow); }
+
+    @media (max-width: 720px){
+      .hero-title{ font-size: 2.2rem; }
+      .hud-container{ height: 300px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-light"></div>
+
+  <!-- AUDIO ELEMENT (src set on 1st click) -->
+  <audio id="bgMusic" preload="none" loop></audio>
+
+  <header>
+    <div class="logo-wrapper">
+      <img src="https://ipfs.io/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy" alt="MIMHO Logo">
+      <div class="logo-text">MIMHO</div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="manifesto.html" data-en="MANIFESTO" data-pt="MANIFESTO">MANIFESTO</a>
+      <a href="roadmap.html" data-en="ROADMAP" data-pt="ROADMAP">ROADMAP</a>
+      <a href="index.html" data-en="HOME" data-pt="HOME">HOME</a>
+      <a href="https://bscscan.com" target="_blank">BSCSCAN</a>
+      <a href="whitepaper.html" data-en="WHITEPAPER" data-pt="WHITEPAPER">WHITEPAPER</a>
+    </nav>
+
+    <div style="display:flex; gap:15px; align-items:center;">
+      <div onclick="toggleLanguage()" style="cursor:pointer; color:#fff; font-size:0.8rem; border:1px solid #333; padding:5px 12px; border-radius:20px;">
+        <span id="lang-label">EN</span> <i class="fas fa-globe"></i>
+      </div>
+      <button class="btn-premium" data-en="CONNECT" data-pt="CONECTAR">CONNECT</button>
+    </div>
+  </header>
+
+  <div class="analytics-bar">
+    <div class="analytics-item">STATUS: <span style="color:#00ff88">LIVE</span></div>
+    <div class="analytics-item" data-en="SECURITY:" data-pt="SEGURANÇA:">SECURITY: <span>POLICY</span></div>
+    <div class="analytics-item" data-en="DISCLOSURE:" data-pt="DIVULGAÇÃO:">DISCLOSURE: <span>RESPONSIBLE</span></div>
+    <div class="analytics-item" data-en="CONTACT:" data-pt="CONTATO:">CONTACT: <span>security@mimho.com.br</span></div>
+  </div>
+
+  <section class="page-hero">
+    <div class="hero-tag" data-en="RESPONSIBLE DISCLOSURE" data-pt="DIVULGAÇÃO RESPONSÁVEL">RESPONSIBLE DISCLOSURE</div>
+
+    <h1 class="hero-title">
+      <span data-en="MIMHO <span style='color:var(--orange-glow)'>Security Policy</span>"
+            data-pt="Política de <span style='color:var(--orange-glow)'>Segurança</span> MIMHO">
+        MIMHO <span style="color:var(--orange-glow)">Security Policy</span>
+      </span>
+    </h1>
+
+    <p class="hero-sub"
+       data-en="If you find a vulnerability affecting the MIMHO ecosystem, please report it privately. We take security seriously and aim to protect users, liquidity, and smart contracts with transparent procedures."
+       data-pt="Se você encontrar uma vulnerabilidade que afete o ecossistema MIMHO, por favor reporte em privado. Levamos segurança a sério e buscamos proteger usuários, liquidez e contratos com procedimentos transparentes.">
+      If you find a vulnerability affecting the MIMHO ecosystem, please report it privately. We take security seriously and aim to protect users, liquidity, and smart contracts with transparent procedures.
+    </p>
+
+    <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:22px;">
+      <a class="btn-premium" href="mailto:security@mimho.com.br">
+        <i class="fas fa-shield-halved"></i>
+        <span data-en="REPORT A VULNERABILITY" data-pt="REPORTAR VULNERABILIDADE">REPORT A VULNERABILITY</span>
+      </a>
+      <a class="btn-premium btn-outline" href="security.txt">
+        <i class="fas fa-file-lines"></i>
+        <span data-en="VIEW security.txt" data-pt="VER security.txt">VIEW security.txt</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="hud-container" id="tech">
+    <div class="hud-header">
+      <span><i class="fas fa-satellite-dish"></i> BROADCAST: SECURITY_CHANNEL_V1.0.0</span>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <span id="hud-status" style="color:#00ff88;">• SYSTEM ONLINE</span>
+        <span style="opacity:0.5;">ENCRYPTION: AES-256</span>
+      </div>
+    </div>
+    <div id="hud-feed" class="hud-feed"></div>
+  </section>
+
+  <section class="grid-section">
+
+    <div class="info-card">
+      <div class="badge" data-en="CONTACT" data-pt="CONTATO">CONTACT</div>
+      <h3 data-en="How to report" data-pt="Como reportar">How to report</h3>
+      <p data-en="Email us at <span class='inline-code'>security@mimho.com.br</span> with a clear description, reproduction steps, affected pages/contracts, and any proof-of-concept (PoC)."
+         data-pt="Envie um e-mail para <span class='inline-code'>security@mimho.com.br</span> com descrição clara, passos de reprodução, páginas/contratos afetados e qualquer prova de conceito (PoC).">
+        Email us at <span class="inline-code">security@mimho.com.br</span> with a clear description, reproduction steps, affected pages/contracts, and any proof-of-concept (PoC).
+      </p>
+      <ul class="list">
+        <li data-en="Subject: [MIMHO SECURITY] Short title" data-pt="Assunto: [MIMHO SECURITY] Título curto">Subject: [MIMHO SECURITY] Short title</li>
+        <li data-en="Include: chain, contract, function, and transaction examples (if any)" data-pt="Inclua: chain, contrato, função e exemplos de transações (se houver)">Include: chain, contract, function, and transaction examples (if any)</li>
+        <li data-en="If urgent/exploitable, mark as CRITICAL" data-pt="Se for urgente/explorável, marque como CRITICAL">If urgent/exploitable, mark as CRITICAL</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="badge" data-en="SCOPE" data-pt="ESCOPO">SCOPE</div>
+      <h3 data-en="What is in scope" data-pt="O que está no escopo">What is in scope</h3>
+      <p data-en="This policy covers vulnerabilities that could impact users, funds, or integrity of the MIMHO ecosystem."
+         data-pt="Esta política cobre vulnerabilidades que possam afetar usuários, fundos ou a integridade do ecossistema MIMHO.">
+        This policy covers vulnerabilities that could impact users, funds, or integrity of the MIMHO ecosystem.
+      </p>
+      <ul class="list">
+        <li data-en="Official website: mimho.io and its pages" data-pt="Site oficial: mimho.io e suas páginas">Official website: mimho.io and its pages</li>
+        <li data-en="Smart contracts officially published/linked by MIMHO" data-pt="Contratos inteligentes oficiais publicados/linkados pela MIMHO">Smart contracts officially published/linked by MIMHO</li>
+        <li data-en="Wallet connect flows, UI security issues, phishing vectors" data-pt="Fluxos de conexão de carteira, falhas de UI, vetores de phishing">Wallet connect flows, UI security issues, phishing vectors</li>
+        <li data-en="Infrastructure configs directly controlled by MIMHO (e.g., DNS, redirects)" data-pt="Configurações de infra controladas pela MIMHO (ex: DNS, redirects)">Infrastructure configs directly controlled by MIMHO (e.g., DNS, redirects)</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="badge" data-en="OUT OF SCOPE" data-pt="FORA DO ESCOPO">OUT OF SCOPE</div>
+      <h3 data-en="What is not in scope" data-pt="O que não está no escopo">What is not in scope</h3>
+      <p data-en="We may still reply, but the items below typically do not qualify as security vulnerabilities."
+         data-pt="Ainda podemos responder, mas os itens abaixo geralmente não são vulnerabilidades de segurança.">
+        We may still reply, but the items below typically do not qualify as security vulnerabilities.
+      </p>
+      <ul class="list">
+        <li data-en="Issues in third-party sites/services not controlled by MIMHO" data-pt="Problemas em serviços de terceiros não controlados pela MIMHO">Issues in third-party sites/services not controlled by MIMHO</li>
+        <li data-en="Social engineering of individuals" data-pt="Engenharia social contra indivíduos">Social engineering of individuals</li>
+        <li data-en="Spam, rate limiting suggestions, or best-practice-only reports" data-pt="Spam, sugestões de rate limit, ou apenas boas práticas sem impacto">Spam, rate limiting suggestions, or best-practice-only reports</li>
+        <li data-en="Reports without reproducible steps" data-pt="Relatos sem passos reproduzíveis">Reports without reproducible steps</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="badge" data-en="SAFE HARBOR" data-pt="SAFE HARBOR">SAFE HARBOR</div>
+      <h3 data-en="Responsible research" data-pt="Pesquisa responsável">Responsible research</h3>
+      <p data-en="If you act in good faith, avoid user harm, and give us time to respond, we consider your research helpful. Please do not exploit vulnerabilities beyond what is necessary to prove impact."
+         data-pt="Se você agir de boa fé, evitar causar danos e nos der tempo para responder, consideramos sua pesquisa bem-vinda. Não explore vulnerabilidades além do necessário para provar o impacto.">
+        If you act in good faith, avoid user harm, and give us time to respond, we consider your research helpful. Please do not exploit vulnerabilities beyond what is necessary to prove impact.
+      </p>
+      <ul class="list">
+        <li data-en="Do not access or modify user funds" data-pt="Não acesse nem modifique fundos de usuários">Do not access or modify user funds</li>
+        <li data-en="Do not degrade services (no DDoS/testing at scale)" data-pt="Não degrade serviços (sem DDoS/testes em escala)">Do not degrade services (no DDoS/testing at scale)</li>
+        <li data-en="No public disclosure before mitigation" data-pt="Sem divulgação pública antes da correção">No public disclosure before mitigation</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="badge" data-en="PROCESS" data-pt="PROCESSO">PROCESS</div>
+      <h3 data-en="What happens after you report" data-pt="O que acontece após reportar">What happens after you report</h3>
+      <p data-en="We aim to acknowledge reports quickly and keep communication open with clear status updates."
+         data-pt="Buscamos confirmar recebimento rapidamente e manter comunicação aberta com atualizações claras de status.">
+        We aim to acknowledge reports quickly and keep communication open with clear status updates.
+      </p>
+      <ul class="list">
+        <li data-en="Acknowledgement: usually within 72 hours" data-pt="Confirmação: geralmente em até 72 horas">Acknowledgement: usually within 72 hours</li>
+        <li data-en="Triage & validation: severity and reproducibility check" data-pt="Triagem & validação: severidade e reprodutibilidade">Triage & validation: severity and reproducibility check</li>
+        <li data-en="Mitigation plan: patch, upgrade, or operational response" data-pt="Plano de mitigação: patch, upgrade ou resposta operacional">Mitigation plan: patch, upgrade, or operational response</li>
+        <li data-en="Public note (if needed) after mitigation" data-pt="Nota pública (se necessário) após correção">Public note (if needed) after mitigation</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="badge" data-en="PHISHING" data-pt="GOLPES">PHISHING</div>
+      <h3 data-en="Anti-phishing notice" data-pt="Aviso anti-phishing">Anti-phishing notice</h3>
+      <p data-en="MIMHO will never ask for your seed phrase or private keys. Always verify you are on the official domain and use official contract addresses only."
+         data-pt="A MIMHO nunca pedirá sua seed phrase ou chaves privadas. Sempre verifique se você está no domínio oficial e use apenas endereços oficiais de contratos.">
+        MIMHO will never ask for your seed phrase or private keys. Always verify you are on the official domain and use official contract addresses only.
+      </p>
+      <p style="margin-top:12px;"
+         data-en="If you spot fake tokens or cloned websites, email <span class='inline-code'>security@mimho.com.br</span> immediately."
+         data-pt="Se você identificar tokens falsos ou sites clonados, envie e-mail para <span class='inline-code'>security@mimho.com.br</span> imediatamente.">
+        If you spot fake tokens or cloned websites, email <span class="inline-code">security@mimho.com.br</span> immediately.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="logo-text" style="font-size: 1.2rem;">MIMHO</div>
+    <p style="font-size: 0.75rem; color: #444; max-width: 700px; margin: 20px auto;"
+       data-en='"Security is a public commitment. Reports are handled with priority, transparency, and responsible disclosure."'
+       data-pt='"Segurança é um compromisso público. Relatos são tratados com prioridade, transparência e divulgação responsável."'>
+      "Security is a public commitment. Reports are handled with priority, transparency, and responsible disclosure."
+    </p>
+
+    <div class="footer-contact">
+      <h4 data-en="CONTACT US" data-pt="FALE CONOSCO">CONTACT US</h4>
+      <a href="mailto:contato@mimho.com.br" class="footer-link">contato@mimho.com.br</a>
+      <div style="margin-top:10px;">
+        <a href="mailto:security@mimho.com.br" class="footer-link">security@mimho.com.br</a>
+      </div>
+    </div>
+
+    <div class="footer-links" style="margin-top:18px; text-align:center;">
+      <a href="https://github.com/MIMHO-Ecosystem/mimho-core" target="_blank"
+         style="display:inline-flex; align-items:center; gap:8px; color:#00ff88; font-weight:600; text-decoration:none; font-size:0.85rem; opacity:0.85;">
+        <i class="fab fa-github"></i>
+        VIEW SOURCE ON GITHUB
+      </a>
+    </div>
+  </footer>
+
+  <script>
+   // ====== GLOBALS ======
+let currentLang = 'en';
+window.currentLang = currentLang; // <-- ADICIONADO (espelha global)
+
+// ====== LANGUAGE TOGGLE ======
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'pt' : 'en';
+  window.currentLang = currentLang; // <-- ADICIONADO (mantém HUD sincronizado)
+
+  document.getElementById('lang-label').innerText = currentLang.toUpperCase();
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const content = el.getAttribute(`data-${currentLang}`);
+    if (content) el.innerHTML = content;
+  });
+}
+
+    // ====== AI BUTTON ======
+    document.getElementById('aiBtn').addEventListener('click', () => {
+      alert('MIMHO AI: Online.');
+    });
+
+    // ====== MUSIC (mobile-safe: load src only on click) ======
+    const MUSIC_URL = "https://ipfs.io/ipfs/bafybeifviou4wsqa56bt3ppu6uqq7oombvagesr3z26m7qhgsjfeuxaowq";
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let musicLoaded = false;
+
+    function setMusicIcon(isPlaying) {
+      musicBtn.innerHTML = isPlaying ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
+    }
+    setMusicIcon(false);
+
+    musicBtn.addEventListener('click', async () => {
+      try {
+        if (!musicLoaded) {
+          bgMusic.src = MUSIC_URL;
+          bgMusic.loop = true;
+          bgMusic.volume = 0.5;
+          musicLoaded = true;
+        }
+        if (bgMusic.paused) {
+          await bgMusic.play();
+          setMusicIcon(true);
+        } else {
+          bgMusic.pause();
+          setMusicIcon(false);
+        }
+      } catch (e) {
+        console.log("Play blocked until user interaction:", e);
+      }
+    });
+
+    // ====== HUD FEED ======
+    const hudMessages = [
+      { en: "Security channel online. Monitoring signals… 🛰️", pt: "Canal de segurança online. Monitorando sinais… 🛰️" },
+      { en: "Tip: verify official contracts before trading ✅", pt: "Dica: verifique contratos oficiais antes de negociar ✅" },
+      { en: "Report phishing: security@mimho.com.br", pt: "Reporte golpes: security@mimho.com.br" },
+      { en: "Responsible disclosure protects the whole ecosystem 🛡️", pt: "Divulgação responsável protege todo o ecossistema 🛡️" }
+    ];
+
+    function addHudEvent() {
+      const feed = document.getElementById('hud-feed');
+      if (!feed) return;
+
+      const now = new Date();
+      const timeStr = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+      const msg = hudMessages[Math.floor(Math.random() * hudMessages.length)];
+
+      const line = document.createElement('div');
+      line.className = 'hud-line';
+      line.innerHTML = `<span>[${timeStr}]</span> > ${currentLang === 'en' ? msg.en : msg.pt}`;
+
+      feed.prepend(line);
+      if (feed.children.length > 8) feed.removeChild(feed.lastChild);
+    }
+
+    window.addEventListener('load', () => {
+      // Default EN already (currentLang = 'en')
+      setInterval(addHudEvent, 4200);
+    });
+  </script>
+  
+  <script>
+  // ================================
+  // MIMHO SECURITY HUD — ONLY SECURITY MESSAGES
+  // (Added without removing anything)
+  // ================================
+
+  // If your site already defines currentLang/applyLanguage/toggleLanguage,
+  // this will reuse it. If not, it defaults to 'en' safely.
+  window.currentLang = window.currentLang || 'en';
+
+  const securityAlerts = [
+    {
+      en: "SECURITY: Only trust the official MIMHO contract address shown on mimho.io.",
+      pt: "SEGURANÇA: Confie apenas no endereço oficial do contrato MIMHO mostrado em mimho.io."
+    },
+    {
+      en: "ALERT: Fake tokens exist. Always verify the contract address before any swap.",
+      pt: "ALERTA: Existem tokens falsos. Sempre verifique o endereço do contrato antes de qualquer swap."
+    },
+    {
+      en: "WARNING: MIMHO team will NEVER ask for seed phrase, private keys, or remote access.",
+      pt: "AVISO: A equipe MIMHO NUNCA pedirá seed phrase, chaves privadas ou acesso remoto."
+    },
+    {
+      en: "CHECK: Confirm you are on the correct chain and using official links from mimho.io.",
+      pt: "CHECAGEM: Confirme a rede correta e use apenas links oficiais listados em mimho.io."
+    },
+    {
+      en: "SECURITY TIP: Beware of impersonator domains. Type the URL manually: mimho.io",
+      pt: "DICA: Cuidado com domínios falsos. Digite o endereço manualmente: mimho.io"
+    },
+    {
+      en: "REMINDER: Report vulnerabilities privately to security@mimho.com.br (Responsible Disclosure).",
+      pt: "LEMBRETE: Reporte vulnerabilidades em privado para security@mimho.com.br (Divulgação Responsável)."
+    },
+    {
+      en: "SAFETY: Never send funds to unsolicited addresses. Verify everything first.",
+      pt: "SEGURANÇA: Nunca envie fundos para endereços solicitados por terceiros. Verifique tudo antes."
+    },
+    {
+      en: "NOTICE: If a token claims to be MIMHO but differs from the official address, it is NOT MIMHO.",
+      pt: "AVISO: Se um token diz ser MIMHO mas o endereço difere do oficial, NÃO é MIMHO."
+    }
+  ];
+
+  // Push one line into the HUD feed
+  function addSecurityHudEvent() {
+    const feed = document.getElementById('hud-feed');
+    if (!feed) return;
+
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const timeStr = `${hh}:${mm}`;
+
+    const msg = securityAlerts[Math.floor(Math.random() * securityAlerts.length)];
+    const text = (window.currentLang === 'pt') ? msg.pt : msg.en;
+
+    const line = document.createElement('div');
+    line.className = 'hud-line';
+    line.innerHTML = `<span>[${timeStr}]</span> > ${text}`;
+
+    // You already use column-reverse in CSS, so prepend looks great.
+    feed.prepend(line);
+
+    // Keep it clean (security page = fewer lines)
+    if (feed.children.length > 10) feed.removeChild(feed.lastChild);
+  }
+
+  // Start only this page HUD (security only)
+  function initSecurityHud() {
+    // First message instantly (feels alive)
+    addSecurityHudEvent();
+
+    // Then interval (readable, not "cansativo")
+    // You said you like alerts every ~6+ messages/time — here it's 6.5s.
+    setInterval(addSecurityHudEvent, 6500);
+  }
+
+  // Hook into your existing load listener WITHOUT overriding it
+  window.addEventListener('load', () => {
+    initSecurityHud();
+  });
+</script>
+
+  <!-- SCHEMA ORG — MIMHO OFFICIAL -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mimho.io/#organization",
+        "name": "MIMHO",
+        "url": "https://mimho.io",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy"
+        },
+        "sameAs": [
+          "https://x.com/Mimho_Ecosystem",
+          "https://github.com/MIMHO-Ecosystem/mimho-core",
+          "https://youtube.com/@mimho-mars_is_my_house"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mimho.io/#website",
+        "url": "https://mimho.io",
+        "name": "MIMHO Ecosystem",
+        "publisher": { "@id": "https://mimho.io/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mimho.io/security-policy.html#webpage",
+        "url": "https://mimho.io/security-policy.html",
+        "name": "MIMHO Security Policy",
+        "isPartOf": { "@id": "https://mimho.io/#website" },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
+</body>
+</html>

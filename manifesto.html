@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- ================== MIMHO MANIFESTO — SEO / SOCIAL ================== -->
+
+<meta charset="UTF-8" />
+
+<title>MIMHO Manifesto – On-Chain Principles, Governance & Immutable Rules | BNB Chain</title>
+
+<meta name="description" content="Read the MIMHO Manifesto: a Web3 ecosystem on BNB Chain built fully on-chain with real governance, immutable rules, transparent smart contracts, and zero hidden control. Learn the principles guiding the MIMHO mission and long-term vision." />
+
+<link rel="canonical" href="https://mimho.io/manifesto.html" />
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MIMHO Manifesto – On-Chain Principles & Real Governance" />
+<meta property="og:description" content="The MIMHO Manifesto explains our on-chain principles: transparent governance, immutable rules, auditable smart contracts, and long-term ecosystem building on BNB Chain." />
+<meta property="og:url" content="https://mimho.io/manifesto" />
+<meta property="og:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_MANIFESTO" />
+<meta property="og:site_name" content="MIMHO" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MIMHO Manifesto – Real On-Chain Governance & Immutable Rules" />
+<meta name="twitter:description" content="Discover the principles behind MIMHO: fully on-chain architecture, transparent governance, immutable rules, and verifiable security on BNB Chain." />
+<meta name="twitter:image" content="https://emerald-high-grasshopper-50.mypinata.cloud/ipfs/COLOQUE_A_IMAGEM_MANIFESTO" />
+<meta name="twitter:site" content="@Mimho_Ecosystem" />
+
+<!-- Fonts / Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================== END MIMHO MANIFESTO META ================== -->
+
+  <style>
+    :root {
+      --orange-glow: #ff8c00;
+      --orange-deep: #ff4500;
+      --mimho-blue: #0047ff;
+      --dark-bg: #03040a;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-silver: #e0e0e0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-silver);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    .ambient-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(80px);
+      top: 10%;
+      left: -150px;
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(3, 4, 10, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Logo clicável -> HOME */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .logo-wrapper img { height: 32px; width: auto; display: block; }
+
+    .logo-text {
+      font-family: 'Orbitron';
+      font-weight: 900;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #fff, var(--orange-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .nav-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 25px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    /* Botão CONNECT */
+    .btn-premium {
+      background: linear-gradient(135deg, var(--orange-glow), var(--orange-deep));
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    .btn-premium:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+    }
+
+    /* Botão de idioma */
+    .btn-lang {
+      background: transparent;
+      border: 2px solid rgba(255, 140, 0, 0.85);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-lang:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(255,140,0,0.22);
+    }
+    .btn-lang .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange-glow);
+      box-shadow: 0 0 10px rgba(255,140,0,0.45);
+      display: inline-block;
+    }
+
+    .page-wrap {
+      padding-top: 110px;
+      padding-left: 8%;
+      padding-right: 8%;
+      padding-bottom: 80px;
+    }
+
+    /* Card FULL-WIDTH do topo */
+    .hero-card {
+      width: 100%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 25px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .hero-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,140,0,0.55);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.12);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(circle at 20% 10%, rgba(255,140,0,0.15), transparent 55%),
+                  radial-gradient(circle at 90% 40%, rgba(0,71,255,0.10), transparent 55%);
+      filter: blur(20px);
+      opacity: 0.9;
+      pointer-events:none;
+    }
+    .hero-card > * { position: relative; z-index: 2; }
+
+    .hero-tag {
+      color: var(--orange-glow);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      font-family: 'Orbitron';
+      color: #fff;
+    }
+    @media (max-width: 520px) {
+      .hero-title { font-size: 1.8rem; }
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: #aaa;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 980px;
+      white-space: normal;
+    }
+
+    /* Grid de cards */
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+    @media (max-width: 900px) {
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .manifesto-card { grid-column: span 12 !important; }
+    }
+
+    .manifesto-card {
+      grid-column: span 6;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      cursor: default;
+    }
+    .manifesto-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,140,0,0.55);
+      box-shadow: 0 0 28px rgba(255, 140, 0, 0.12);
+    }
+
+    .manifesto-card .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Orbitron';
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: #111;
+      background: linear-gradient(135deg, var(--orange-glow), var(--orange-deep));
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 140, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange-glow);
+      background: rgba(0,0,0,0.35);
+      flex: 0 0 auto;
+    }
+
+    .manifesto-card h2 {
+      margin: 0 0 10px;
+      font-family: 'Orbitron';
+      color: #fff;
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+    }
+
+    .manifesto-card p {
+      margin: 0 0 10px;
+      color: #bbb;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      font-size: 1.02rem;
+      white-space: normal;
+    }
+
+    .manifesto-card .bullets {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #bdbdbd;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+    }
+    .manifesto-card .bullets li { margin: 6px 0; }
+
+    .full { grid-column: span 12; }
+
+    /* Rodapé */
+    footer {
+      padding: 60px 8%;
+      border-top: 1px solid #111;
+      text-align: center;
+      margin-top: 70px;
+      color: #666;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-contact {
+      margin-top: 30px;
+      border-top: 1px solid #222;
+      padding-top: 20px;
+    }
+    .footer-contact h4 {
+      font-family: 'Orbitron';
+      font-size: 0.8rem;
+      color: var(--orange-glow);
+      letter-spacing: 2px;
+      margin: 0 0 10px;
+    }
+    .footer-link {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Inter';
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    .footer-link:hover { color: var(--orange-glow); }
+
+    .footer-actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid var(--orange-glow);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Orbitron';
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(255,140,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-light"></div>
+
+  <header>
+    <a class="logo-wrapper" href="index.html" title="Back to Home">
+      <img src="https://ipfs.io/ipfs/bafkreialnba4lwlknwsqaygbf3ihl24tlvphigg4bua4ahbyeqovwhs4iy" alt="MIMHO Logo">
+      <div class="logo-text">MIMHO</div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="manifesto.html" style="color:#fff;">MANIFESTO</a>
+      <a href="roadmap.html">ROADMAP</a>
+      <a href="index.html">FAQ</a>
+      <a href="whitepaper.html">WHITEPAPER</a>
+    </nav>
+
+    <div style="display:flex; gap:12px; align-items:center;">
+      <button class="btn-lang" id="langToggle" type="button" title="Switch language">
+        <span class="dot"></span>
+        <span id="langLabel">EN</span>
+      </button>
+
+      <button class="btn-premium" id="connectBtn">CONNECT</button>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+
+    <section class="hero-card">
+      <div class="hero-tag"
+           data-pt="🌌 MANIFESTO MIMHO"
+           data-en="🌌 MIMHO MANIFESTO">
+        🌌 MANIFESTO MIMHO
+      </div>
+
+      <h1 class="hero-title"
+          data-pt="MIMHO – a Meme Coin do Futuro"
+          data-en="MIMHO – the Meme Coin of the Future">
+        MIMHO – a Meme Coin do Futuro
+      </h1>
+
+      <p class="hero-sub"
+         data-pt="Um manifesto contra promessas vazias, governanças fictícias e comunidades usadas como liquidez descartável. Aqui, meme não é desculpa para caos: é a porta de entrada para algo maior."
+         data-en="A manifesto against empty promises, fake governance, and communities treated as disposable liquidity. Here, memes are not an excuse for chaos: they are the gateway to something greater.">
+        Um manifesto contra promessas vazias, governanças fictícias e comunidades usadas como liquidez descartável. Aqui, meme não é desculpa para caos: é a porta de entrada para algo maior.
+      </p>
+    </section>
+
+    <section class="manifesto-grid">
+
+      <!-- CARD 1 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🚨 O PROBLEMA"
+                data-en="🚨 THE PROBLEM">🚨 O PROBLEMA</span>
+          <span class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+        </div>
+
+        <h2 data-pt="Promessas vazias"
+            data-en="Empty promises">
+          Promessas vazias
+        </h2>
+
+        <p data-pt="O mundo cripto se encheu de promessas vazias. Memecoins que nascem para morrer. Governanças que existem só no papel. Comunidades usadas como liquidez descartável."
+           data-en="The crypto world has been flooded with empty promises. Memecoins born to die. Governance that exists only on paper. Communities used as disposable liquidity.">
+          O mundo cripto se encheu de promessas vazias. Memecoins que nascem para morrer. Governanças que existem só no papel. Comunidades usadas como liquidez descartável.
+        </p>
+
+        <p data-pt="Projetos falam de “descentralização”, mas decidem tudo em salas fechadas. Falam de “comunidade”, mas só aparecem quando precisam vender. Nós vimos isso acontecer vezes demais. E decidimos não repetir."
+           data-en="Projects talk about “decentralization”, but decide everything behind closed doors. They talk about “community”, but only show up when they need to sell. We’ve seen this happen too many times. And we decided not to repeat it.">
+          Projetos falam de “descentralização”, mas decidem tudo em salas fechadas. Falam de “comunidade”, mas só aparecem quando precisam vender. Nós vimos isso acontecer vezes demais. E decidimos não repetir.
+        </p>
+      </article>
+
+      <!-- CARD 2 (lista grande) -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🔥 A REBELIÃO"
+                data-en="🔥 THE REBELLION">🔥 A REBELIÃO</span>
+          <span class="card-icon"><i class="fa-solid fa-fire"></i></span>
+        </div>
+
+        <h2 data-pt="O fim do improviso eterno"
+            data-en="The end of endless improvisation">
+          O fim do improviso eterno
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="O MIMHO não nasceu para ser só mais um token." data-en="MIMHO was not born to be just another token.">O MIMHO não nasceu para ser só mais um token.</li>
+          <li data-pt="Ele nasceu como um ato de inconformismo." data-en="It was born as an act of nonconformity.">Ele nasceu como um ato de inconformismo.</li>
+          <li data-pt="Um questionamento direto:" data-en="A direct question:">Um questionamento direto:</li>
+          <li data-pt="E se uma memecoin pudesse ser governada com seriedade?" data-en="What if a memecoin could be governed with seriousness?">E se uma memecoin pudesse ser governada com seriedade?</li>
+          <li data-pt="E se diversão e responsabilidade pudessem coexistir?" data-en="What if fun and responsibility could coexist?">E se diversão e responsabilidade pudessem coexistir?</li>
+          <li data-pt="MIMHO é a recusa ao improviso eterno." data-en="MIMHO is the refusal of endless improvisation.">MIMHO é a recusa ao improviso eterno.</li>
+          <li data-pt="É o fim do “confia em mim, irmão”." data-en="It is the end of “trust me, bro”." >É o fim do “confia em mim, irmão”.</li>
+          <li data-pt="Aqui, meme não é desculpa para caos." data-en="Here, memes are not an excuse for chaos.">Aqui, meme não é desculpa para caos.</li>
+          <li data-pt="É a porta de entrada para algo maior." data-en="They are the gateway to something greater.">É a porta de entrada para algo maior.</li>
+        </ul>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🧬 A VISÃO"
+                data-en="🧬 THE VISION">🧬 A VISÃO</span>
+          <span class="card-icon"><i class="fa-solid fa-dna"></i></span>
+        </div>
+
+        <h2 data-pt="Três pilares"
+            data-en="Three pillars">
+          Três pilares
+        </h2>
+
+        <p data-pt="Nós acreditamos que:" data-en="We believe that:">Nós acreditamos que:</p>
+
+        <ul class="bullets">
+          <li data-pt="Memes conectam pessoas" data-en="Memes connect people">Memes conectam pessoas</li>
+          <li data-pt="Governança constrói futuro" data-en="Governance builds the future">Governança constrói futuro</li>
+          <li data-pt="Transparência gera confiança" data-en="Transparency generates trust">Transparência gera confiança</li>
+        </ul>
+
+        <p data-pt="O MIMHO une esses três pilares. Criamos um ecossistema onde: cada ação importa, cada decisão deixa rastro, cada contrato conversa com o outro. Nada acontece no escuro. Nada depende de fé cega. Tudo é on-chain, auditável e público."
+           data-en="MIMHO unites these three pillars. We built an ecosystem where every action matters, every decision leaves a trace, and every contract talks to each other. Nothing happens in the dark. Nothing relies on blind faith. Everything is on-chain, auditable, and public.">
+          O MIMHO une esses três pilares. Criamos um ecossistema onde: cada ação importa, cada decisão deixa rastro, cada contrato conversa com o outro. Nada acontece no escuro. Nada depende de fé cega. Tudo é on-chain, auditável e público.
+        </p>
+      </article>
+
+      <!-- CARD 4 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="⚙️ O DIFERENCIAL"
+                data-en="⚙️ THE DIFFERENTIAL">⚙️ O DIFERENCIAL</span>
+          <span class="card-icon"><i class="fa-solid fa-gear"></i></span>
+        </div>
+
+        <h2 data-pt="Um organismo vivo"
+            data-en="A living organism">
+          Um organismo vivo
+        </h2>
+
+        <p data-pt="O MIMHO não é um token isolado. É um organismo vivo. Um ecossistema modular onde: governança é real, regras são claras, poder é distribuído."
+           data-en="MIMHO is not an isolated token. It is a living organism. A modular ecosystem where governance is real, rules are clear, and power is distributed.">
+          O MIMHO não é um token isolado. É um organismo vivo. Um ecossistema modular onde: governança é real, regras são claras, poder é distribuído.
+        </p>
+
+        <ul class="bullets">
+          <li data-pt="Eventos não são escondidos" data-en="Events are not hidden">Eventos não são escondidos</li>
+          <li data-pt="Decisões não são mágicas" data-en="Decisions are not magical">Decisões não são mágicas</li>
+          <li data-pt="Evolução não quebra o passado" data-en="Evolution does not break the past">Evolução não quebra o passado</li>
+        </ul>
+
+        <p style="margin-top:12px;"
+           data-pt="Tudo foi pensado para crescer sem trair a própria origem."
+           data-en="Everything was designed to grow without betraying its own origin.">
+          Tudo foi pensado para crescer sem trair a própria origem.
+        </p>
+      </article>
+
+      <!-- CARD 5 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🧠 O PAPEL DA COMUNIDADE"
+                data-en="🧠 THE COMMUNITY’S ROLE">🧠 O PAPEL DA COMUNIDADE</span>
+          <span class="card-icon"><i class="fa-solid fa-users"></i></span>
+        </div>
+
+        <h2 data-pt="Você não é plateia"
+            data-en="You are not the audience">
+          Você não é plateia
+        </h2>
+
+        <p data-pt="No MIMHO, você não é plateia. Você é: Validador. Participante. Construtor."
+           data-en="In MIMHO, you are not the audience. You are: Validator. Participant. Builder.">
+          No MIMHO, você não é plateia. Você é: Validador. Participante. Construtor.
+        </p>
+
+        <ul class="bullets">
+          <li data-pt="Holding não é silêncio" data-en="Holding is not silence">Holding não é silêncio</li>
+          <li data-pt="Participar é parte do jogo" data-en="Participation is part of the game">Participar é parte do jogo</li>
+          <li data-pt="Quanto mais tempo, mais peso" data-en="The more time, the more weight">Quanto mais tempo, mais peso</li>
+          <li data-pt="Quanto mais envolvimento, mais voz" data-en="The more involvement, the more voice">Quanto mais envolvimento, mais voz</li>
+          <li data-pt="Não premiamos pressa" data-en="We don’t reward haste">Não premiamos pressa</li>
+          <li data-pt="Premiamos compromisso" data-en="We reward commitment">Premiamos compromisso</li>
+        </ul>
+      </article>
+
+      <!-- CARD 6 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🌱 O FUTURO"
+                data-en="🌱 THE FUTURE">🌱 O FUTURO</span>
+          <span class="card-icon"><i class="fa-solid fa-seedling"></i></span>
+        </div>
+
+        <h2 data-pt="Não promete lua"
+            data-en="No moon promises">
+          Não promete lua
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="O MIMHO não promete lua" data-en="MIMHO does not promise the moon">O MIMHO não promete lua</li>
+          <li data-pt="Promete estrutura" data-en="It promises structure">Promete estrutura</li>
+          <li data-pt="Promete que o projeto não vai desaparecer quando o hype acabar" data-en="It promises the project won’t disappear when hype fades">Promete que o projeto não vai desaparecer quando o hype acabar</li>
+          <li data-pt="Promete que regras não mudam para favorecer poucos" data-en="It promises rules won’t change to favor a few">Promete que regras não mudam para favorecer poucos</li>
+          <li data-pt="Promete que o crescimento será construído, não improvisado" data-en="It promises growth will be built, not improvised">Promete que o crescimento será construído, não improvisado</li>
+          <li data-pt="O futuro do MIMHO é modular" data-en="MIMHO’s future is modular">O futuro do MIMHO é modular</li>
+          <li data-pt="Adaptável" data-en="Adaptable">Adaptável</li>
+          <li data-pt="Governado" data-en="Governed">Governado</li>
+        </ul>
+      </article>
+
+      <!-- CARD 7 -->
+      <article class="manifesto-card">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🫱🏽‍🫲🏾 O CONVITE"
+                data-en="🫱🏽‍🫲🏾 THE INVITATION">🫱🏽‍🫲🏾 O CONVITE</span>
+          <span class="card-icon"><i class="fa-solid fa-handshake"></i></span>
+        </div>
+
+        <h2 data-pt="Fazer parte"
+            data-en="Be part of it">
+          Fazer parte
+        </h2>
+
+        <ul class="bullets">
+          <li data-pt="Você pode comprar um token." data-en="You can buy a token.">Você pode comprar um token.</li>
+          <li data-pt="Ou pode fazer parte de algo que está tentando provar uma tese simples:" data-en="Or you can be part of something trying to prove a simple thesis:">Ou pode fazer parte de algo que está tentando provar uma tese simples:</li>
+          <li data-pt="Memecoin também pode ser séria." data-en="A memecoin can also be serious.">Memecoin também pode ser séria.</li>
+          <li data-pt="Governança também pode ser divertida." data-en="Governance can also be fun.">Governança também pode ser divertida.</li>
+          <li data-pt="Comunidade pode ser protagonista." data-en="Community can be the protagonist.">Comunidade pode ser protagonista.</li>
+          <li data-pt="O MIMHO não é para todos." data-en="MIMHO is not for everyone.">O MIMHO não é para todos.</li>
+          <li data-pt="É para quem quer participar." data-en="It’s for those who want to participate.">É para quem quer participar.</li>
+          <li data-pt="Para quem quer construir." data-en="For those who want to build.">Para quem quer construir.</li>
+          <li data-pt="Para quem entende que o futuro não é prometido — é governado." data-en="For those who understand the future is not promised — it is governed.">Para quem entende que o futuro não é prometido — é governado.</li>
+        </ul>
+      </article>
+
+      <!-- CARD 8 (FULL WIDTH FINAL) -->
+      <article class="manifesto-card full">
+        <div class="card-top">
+          <span class="chip"
+                data-pt="🌌 MANIFESTO MIMHO"
+                data-en="🌌 MIMHO MANIFESTO">🌌 MANIFESTO MIMHO</span>
+          <span class="card-icon"><i class="fa-solid fa-rocket"></i></span>
+        </div>
+
+        <h2 data-pt="MIMHO – a Meme Coin do Futuro 🚀"
+            data-en="MIMHO – the Meme Coin of the Future 🚀">
+          MIMHO – a Meme Coin do Futuro 🚀
+        </h2>
+
+        <p data-pt="O MIMHO não é para quem quer só assistir. É para quem quer participar. Para quem quer construir. Para quem entende que o futuro não é prometido — é governado."
+           data-en="MIMHO is not for those who only want to watch. It’s for those who want to participate. For those who want to build. For those who understand the future is not promised — it is governed.">
+          O MIMHO não é para quem quer só assistir. É para quem quer participar. Para quem quer construir. Para quem entende que o futuro não é prometido — é governado.
+        </p>
+
+        <p data-pt="MIMHO – a Meme Coin do Futuro 🚀"
+           data-en="MIMHO – the Meme Coin of the Future 🚀">
+          MIMHO – a Meme Coin do Futuro 🚀
+        </p>
+      </article>
+
+    </section>
+
+    <footer>
+      <div class="footer-actions">
+        <a class="btn-ghost" href="index.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a class="btn-ghost" href="index.html"><i class="fa-solid fa-house"></i> HOME</a>
+      </div>
+
+      <div class="footer-contact">
+        <h4 data-pt="FALE CONOSCO" data-en="CONTACT US">FALE CONOSCO</h4>
+        <a class="footer-link" href="mailto:contact@mimho.io">contato@mimho.com.br</a>
+        </div>
+        
+        
+        <a href="https://github.com/MIMHO-Ecosystem/mimho-core" target="_blank" class="footer-github">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+  
+    </footer>
+
+  </main>
+
+  <script>
+    // CONNECT placeholder
+    document.getElementById('connectBtn')?.addEventListener('click', () => {
+      alert("Connect Wallet: em breve (será ligado com Web3).");
+    });
+
+    // LANGUAGE TOGGLE (EN default)
+    const LANG_KEY = "mimho_lang";
+    const toggleBtn = document.getElementById("langToggle");
+    const langLabel = document.getElementById("langLabel");
+
+    function applyLang(lang) {
+      const nodes = document.querySelectorAll("[data-pt][data-en]");
+      nodes.forEach(el => {
+        el.textContent = (lang === "pt") ? el.getAttribute("data-pt") : el.getAttribute("data-en");
+      });
+      langLabel.textContent = (lang === "pt") ? "PT" : "EN";
+      document.documentElement.lang = (lang === "pt") ? "pt-BR" : "en";
+    }
+
+    function getSavedLang() {
+      const saved = localStorage.getItem(LANG_KEY);
+      return (saved === "pt" || saved === "en") ? saved : "en"; // default EN
+    }
+
+    let currentLang = getSavedLang();
+    applyLang(currentLang);
+
+    toggleBtn?.addEventListener("click", () => {
+      currentLang = (currentLang === "en") ? "pt" : "en";
+      localStorage.setItem(LANG_KEY, currentLang);
+      applyLang(currentLang);
+    });
+  </script>
+</body>
+</html>
